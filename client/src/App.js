@@ -7,6 +7,8 @@ import Home from "./pages/home";
 import Welcome from "./pages/userwelcome";
 import Library from "./pages/mainlibrary";
 import Dashboard from "./pages/dashboard";
+import Create from "./pages/create";
+
 // import Search from "./pages/search";
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
         <Route exact path="/welcome" component={Welcome} />
         <Route exact path="/library" component={Library} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/create" component={Create} />
        
         <Footer />
       </div>
