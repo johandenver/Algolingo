@@ -9,7 +9,7 @@ function Navbar() {
                 <Link className="navbar-brand" to="/">
                 AlgoLingo Logo
                 </Link>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                {/* <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
                     <Link
                     to="/"
@@ -17,7 +17,7 @@ function Navbar() {
                     Login
                     </Link>
                     </li>
-                </ul>
+                </ul> */}
             </div>
         </nav>
     );
