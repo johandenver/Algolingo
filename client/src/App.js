@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import './App.css';
+import './index.css';
+import 'materialize-css/dist/css/materialize.min.css';
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Home from "./pages/home";
@@ -12,20 +13,22 @@ import Create from "./pages/create";
 // import Search from "./pages/search";
 
 function App() {
-  return (
-    <Router>
-      <div>
+  return ( 
+    <div>
+      <Router>
         <Navbar />
-        
-        <Route exact path="/" component={Home} />
-        <Route exact path="/welcome" component={Welcome} />
-        <Route exact path="/library" component={Library} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/create" component={Create} />
-       
-        <Footer />
-      </div>
-    </Router>
+        <main> 
+          <Route exact path="/" component={Home} />
+          <Route exact path="/welcome" component={Welcome} />
+          <Route exact path="/library" component={Library} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/create" component={Create} />
+        </main> 
+        <footer>
+          <Footer />
+        </footer>
+      </Router>
+    </div>
   );
 }
 
