@@ -1,4 +1,18 @@
 .snippet-box {
-    height: 200px;
-    background: whitesmoke;
+  height: 250px;
+  background: whitesmoke;
+  border-radius: 5px;
+}
+
+.form-container {
+  background-color: lightcyan;
+  height: 525px;
+  border-radius: 10px;
+  margin: 15px;
+  padding-left: 40px;
+  padding-top: 5px;
+}
+
+.form-row {
+  margin: 0;
 }

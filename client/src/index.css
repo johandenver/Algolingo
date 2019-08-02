@@ -1,21 +1,23 @@
 body {
-
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   background-color: lightgrey;
-  
 }
 
+#page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
 main {
   flex: 1 0 auto;
 }
 
-
-.side-nav {
+/* .side-nav {
   background-color: lightcyan;
   margin: 15px;
   padding: 15px;
   height: 200px;
-}
+} */
