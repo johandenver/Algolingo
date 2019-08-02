@@ -1,0 +1,18 @@
+.collapsible {
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.collapsible-header {
+  border-radius: 10px;
+  background-color: lightcyan;
+}
+
+.collapsible-body {
+  border-radius: 10px;
+  background-color: lightcyan;
+}
+
+.library-area {
+  margin-top: 15px;
+}

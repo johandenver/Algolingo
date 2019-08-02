@@ -1,0 +1,15 @@
+.side-nav {
+  background-color: lightcyan;
+  border-radius: 10px;
+  margin: 15px;
+  height: 280px;
+}
+
+.menu-item {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.material-icons {
+  padding: 10px;
+}
