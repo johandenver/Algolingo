@@ -1,16 +1,14 @@
 import React from "react";
-import Container from "../components/container";
+import LoginForm from "../components/LoginForm";
+import RegisterForm from "../components/RegisterForm";
 
 function Home() {
-    return (
-      
-        <div>
-            <Container style={{margin:100}}>
-                <h1>Login/Register Form here!</h1>
-            </Container>
-        </div>
-    );
+  return (
+    <div>
+      <LoginForm />
+      <RegisterForm />
+    </div>
+  );
 }
 
 export default Home;
-

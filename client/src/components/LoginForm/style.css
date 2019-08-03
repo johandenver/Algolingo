@@ -1,0 +1,10 @@
+.login-form {
+  background-color: lightcyan;
+  width: 600px;
+  height: 400px;
+  border-radius: 10px;
+  margin: 15px;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+}

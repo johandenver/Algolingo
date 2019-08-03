@@ -1,10 +1,11 @@
 import React from "react";
 import "./style.css";
+import { Collapsible } from "react-materialize";
 
 function AlgorithmCard() {
   return (
     <div className="library-area">
-      <ul class="collapsible z-depth-0">
+      <Collapsible className="z-depth-0">
         <li>
           <div class="collapsible-header">
             <i class="material-icons">filter_drama</i>Title:
@@ -13,7 +14,7 @@ function AlgorithmCard() {
             <span>Lorem ipsum dolor sit amet.</span>
           </div>
         </li>
-      </ul>
+      </Collapsible>
     </div>
   );
 }
