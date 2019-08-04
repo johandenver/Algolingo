@@ -16,3 +16,9 @@
 .library-area {
   margin-top: 15px;
 }
+
+.library-snippet {
+  height: 200px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
