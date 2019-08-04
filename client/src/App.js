@@ -21,7 +21,7 @@ function App() {
         <Navbar />
         <main>
           {/* I removed the original home component */}
-          {/* <Route exact path="/" component={Login} />*/}
+          {/* <Route exact path="/" component={Home} />*/}
           <Route exact path="/" component={Home} />
           <Route exact path="/welcome" component={Welcome} />
           <Route exact path="/library" component={Library} />
