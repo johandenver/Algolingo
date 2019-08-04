@@ -4,11 +4,13 @@ import "./index.css";
 import "materialize-css/dist/css/materialize.min.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-import Home from "./pages/home";
+// import Home from "./pages/home";
+import Home from "./components/Home";
 import Welcome from "./pages/userwelcome";
 import Library from "./pages/mainlibrary";
 import Dashboard from "./pages/dashboard";
 import Create from "./pages/create";
+import Login from "./components/Login";
 
 // import Search from "./pages/search";
 
@@ -18,6 +20,8 @@ function App() {
       <Router>
         <Navbar />
         <main>
+          {/* I removed the original home component */}
+          {/* <Route exact path="/" component={Home} />*/}
           <Route exact path="/" component={Home} />
           <Route exact path="/welcome" component={Welcome} />
           <Route exact path="/library" component={Library} />

@@ -1,12 +1,14 @@
 import React from "react";
-import LoginRegister from "../components/LoginForm";
+
+import LoginForm from "../components/LoginForm";
 
 function Home() {
-  return (
-    <div>
-      <LoginRegister />
-    </div>
-  );
+	return (
+		<div>
+			<LoginForm />
+		</div>
+	);
+
 }
 
 export default Home;
