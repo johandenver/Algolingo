@@ -1,11 +1,21 @@
 import React from "react";
 import "./style.css";
 import { TextInput } from "react-materialize";
+import "whatwg-fetch";
+import { getFromStorage, setInStorage } from "../../utils/storage";
 
 class LoginRegister extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLogin: true, isRegister: false };
+
+    this.state = {
+      isLogin: true,
+      isRegister: false,
+      isLoading: true,
+      token: ""
+    };
+
+    // this.logOut = this.logOut.bind(this);
   }
 
   showLoginForm() {
@@ -16,151 +26,214 @@ class LoginRegister extends React.Component {
     this.setState({ isRegister: true, isLogin: false });
   }
 
-  render() {
-    return (
-      <div className="login-container">
-        <div className="box-controller">
-          <div className="controller" onClick={this.showLoginForm.bind(this)}>
-            Login
-          </div>
-          <div
-            className="controller"
-            onClick={this.showRegisterForm.bind(this)}
-          >
-            Register
-          </div>
-        </div>
-        <div className="input-container">
-          {this.state.isLogin && <LoginForm />}
-          {this.state.isRegister && <RegisterForm />}
-        </div>
-      </div>
-    );
-  }
-}
+  componentDidMount() {
+    const obj = getFromStorage("the_main_app");
+    /*/change this name to the name of our app/*/
 
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+    if (obj && obj.token) {
+      const { token } = obj;
+      // verify token
 
-  submitLogin(e) {}
+      fetch("/api/account/verify?token=" + token)
+        .then(res => res.json())
+        .then(json => {
+          if (json.success) {
+            this.setState({
+              token: token,
+              isLoading: false
+            });
+          } else {
+            this.setState({
+              isLoading: false
+            });
+          }
+        });
+    } else {
+      this.setState({
+        isLoading: false
+      });
+    }
+  }
 
   render() {
-    return (
-      <div className="inner-container">
-        <div className="box-header">Login</div>
-        <div className="box">
-          <div className="input-group">
-            <TextInput label="Email" type="email" name="email" value="" />
-            {/* <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="your email"
-              value=""
-            /> */}
-          </div>
-          <div className="input-group">
-            <TextInput
-              label="Password"
-              type="password"
-              name="password"
-              value=""
-            />
-            {/* <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="your password"
-              value=""
-            /> */}
-            <button
-              type="button"
-              className="btn waves-effect waves-light light-blue darken-2"
-              onClick={this.submitLogin.bind(this)}
-            >
+    const { isLoading, token } = this.state;
+
+    if (isLoading) {
+      return (
+        <div>
+          <p>Loading..</p>
+        </div>
+      );
+    }
+
+    if (!token) {
+      return (
+        <div className="login-container">
+          <div className="box-controller">
+            <div className="controller" onClick={this.showLoginForm.bind(this)}>
               Login
-            </button>
+            </div>
+            <div
+              className="controller"
+              onClick={this.showRegisterForm.bind(this)}
+            >
+              Register
+            </div>
+          </div>
+          <div className="input-container">
+            {this.state.isLogin && <LoginForm />}
+            {this.state.isRegister && <RegisterForm />}
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
 class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoading: true,
+      token: "",
+      signUpError: "",
+      signUpFirstName: "",
+      signUpLastName: "",
+      signUpEmail: "",
+      signUpPassword: ""
+    };
+
+    this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(
+      this
+    );
+    this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(
+      this
+    );
+    this.onTextboxChangeSignUpFirstName = this.onTextboxChangeSignUpFirstName.bind(
+      this
+    );
+    this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(
+      this
+    );
+
+    this.onSignUp = this.onSignUp.bind(this);
   }
 
-  submitRegistration(e) {}
+  onTextboxChangeSignUpEmail(event) {
+    this.setState({
+      signUpEmail: event.target.value
+    });
+  }
+  onTextboxChangeSignUpPassword(event) {
+    this.setState({
+      signUpPassword: event.target.value
+    });
+  }
+
+  onTextboxChangeSignUpFirstName(event) {
+    this.setState({
+      signUpFirstName: event.target.value
+    });
+  }
+  onTextboxChangeSignUpLastName(event) {
+    this.setState({
+      signUpLastName: event.target.value
+    });
+  }
+
+  onSignUp() {
+    // Grab state
+    const {
+      signUpFirstName,
+      signUpLastName,
+      signUpEmail,
+      signUpPassword
+    } = this.state;
+
+    this.setState({
+      isLoading: true
+    });
+    // Post request to backend
+    fetch("/api/account/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        firstName: signUpFirstName,
+        lastName: signUpLastName,
+        email: signUpEmail,
+        password: signUpPassword
+      })
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.success) {
+          this.setState({
+            signUpError: json.message,
+            isLoading: false,
+            signUpPassword: "",
+            signUpFirstName: "",
+            signUpLastName: ""
+          });
+        } else {
+          this.setState({
+            signUpError: json.message,
+            isLoading: false
+          });
+        }
+      });
+  }
 
   render() {
+    const {
+      signUpFirstName,
+      signUpLastName,
+      signUpEmail,
+      signUpPassword,
+      signUpError
+    } = this.state;
+
     return (
       <div className="inner-container">
         <div className="box-header">Register</div>
+        {signUpError ? <p>{signUpError}</p> : null}
         <div className="box">
           <div className="input-group">
             <TextInput
               label="First Name"
               type="text"
-              name="first-name"
-              value=""
+              value={signUpFirstName}
+              onChange={this.onTextboxChangeSignUpFirstName}
             />
-            {/* <label htmlFor="first-name">First Name</label>
-            <input
-              type="text"
-              name="first-name"
-              placeholder="First Name"
-              value=""
-            /> */}
           </div>
           <div className="input-group">
             <TextInput
               label="Last Name"
               type="text"
-              name="last-name"
-              value=""
+              value={signUpLastName}
+              onChange={this.onTextboxChangeSignUpLastName}
             />
-            {/* <label htmlFor="last-name">Last Name</label>
-            <input
-              type="text"
-              name="last-name"
-              placeholder="Last Name"
-              value=""
-            /> */}
           </div>
           <div className="input-group">
-            <TextInput label="Email" type="email" name="email" value="" />
-            {/* <label htmlFor="email">Email</label>
-            <input
+            <TextInput
+              label="Email"
               type="email"
-              name="email"
-              placeholder="your email"
-              value=""
-            /> */}
+              value={signUpEmail}
+              onChange={this.onTextboxChangeSignUpEmail}
+            />
           </div>
           <div className="input-group">
             <TextInput
               label="Password"
               type="password"
-              name="password"
-              value=""
+              value={signUpPassword}
+              onChange={this.onTextboxChangeSignUpPassword}
             />
-            {/* <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="your password"
-              value=""
-            /> */}
             <button
               type="button"
               className="btn waves-effect waves-light light-blue darken-2"
-              onClick={this.submitRegistration.bind(this)}
+              onClick={this.onSignUp}
             >
               Register
             </button>
@@ -171,48 +244,111 @@ class RegisterForm extends React.Component {
   }
 }
 
-// function LoginForm() {
-//   return (
-//     <div className="login-form">
-//       <h4 className="header">AlgoLingo Logo</h4>
+class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      token: "",
+      signInError: "",
+      signInEmail: "",
+      signInPassword: ""
+    };
 
-//       <span className="card-title">
-//         <h6 className="header">Please Sign in</h6>
-//       </span>
-//       <form>
-//         <div className="input-field">
-//           <i className="material-icons prefix">person</i>
-//           <input type="text" id="userId" className="validate" />
-//           <label for="userId">User Id</label>
-//         </div>
+    this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(
+      this
+    );
+    this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(
+      this
+    );
 
-//         <div className="input-field password-div">
-//           <i className="material-icons prefix">lock_outline</i>
-//           <input id="password" type="password" className="validate" />
-//           <label for="password">Password</label>
-//         </div>
+    this.onSignIn = this.onSignIn.bind(this);
+  }
 
-//         <div className="card-action">
-//           <button
-//             className="btn waves-effect waves-light light-blue darken-2"
-//             type="submit"
-//             name="action"
-//             id="login-submit"
-//           >
-//             Login
-//           </button>
-//         </div>
-//         <div class="card-action">
-//           <h6>
-//             New to our site?{" "}
-//             <a class="modal-trigger" href="#registerModal">
-//               REGISTER HERE
-//             </a>
-//           </h6>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// }
+  onTextboxChangeSignInEmail(event) {
+    this.setState({
+      signInEmail: event.target.value
+    });
+  }
+  onTextboxChangeSignInPassword(event) {
+    this.setState({
+      signInPassword: event.target.value
+    });
+  }
+
+  onSignIn() {
+    // Grab state
+    const { signInEmail, signInPassword } = this.state;
+
+    this.setState({
+      isLoading: true
+    });
+    // Post request to backend
+    fetch("/api/account/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: signInEmail,
+        password: signInPassword
+      })
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.success) {
+          setInStorage("the_main_app", { token: json.token });
+          this.setState({
+            signInError: json.message,
+            isLoading: false,
+            signInPassword: "",
+            signInEmail: "",
+            token: json.token
+          });
+        } else {
+          this.setState({
+            signInError: json.message,
+            isLoading: false
+          });
+        }
+      });
+  }
+
+  render() {
+    const { signInEmail, signInPassword, signUpError } = this.state;
+
+    return (
+      <div className="inner-container">
+        <div className="box-header">Login</div>
+        {signUpError ? <p>{signUpError}</p> : null}
+        <div className="box">
+          <div className="input-group">
+            <TextInput
+              label="Email"
+              type="email"
+              value={signInEmail}
+              onChange={this.onTextboxChangeSignInEmail}
+            />
+          </div>
+          <div className="input-group">
+            <TextInput
+              label="Password"
+              type="password"
+              value={signInPassword}
+              onChange={this.onTextboxChangeSignInPassword}
+            />
+            <button
+              type="button"
+              className="btn waves-effect waves-light light-blue darken-2"
+              onClick={this.onSignIn.bind(this)}
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default LoginRegister;

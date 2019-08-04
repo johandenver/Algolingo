@@ -3,7 +3,7 @@ import "whatwg-fetch";
 
 import { getFromStorage, setInStorage } from "../../utils/storage";
 
-class Home extends Component {
+class HomeLogin extends Component {
   constructor(props) {
     super(props);
 
@@ -306,4 +306,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomeLogin;
