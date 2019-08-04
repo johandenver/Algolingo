@@ -1,4 +1,5 @@
 import React from "react";
+
 import LoginForm from "../components/LoginForm";
 
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
 			<LoginForm />
 		</div>
 	);
+
 }
 
 export default Home;
