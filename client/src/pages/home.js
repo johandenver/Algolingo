@@ -1,11 +1,11 @@
 import React from "react";
-import HomeLogin from "../components/Home";
+// import HomeLogin from "../components/Home";
 import LoginRegister from "../components/LoginForm";
 
 function Home() {
   return (
     <div>
-      <HomeLogin />
+      {/* <HomeLogin /> */}
       <LoginRegister />
     </div>
   );
