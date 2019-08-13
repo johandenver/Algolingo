@@ -9,8 +9,8 @@
 }
 
 .collapsible-body {
-  border-radius: 10px;
-  background-color: lightcyan;
+  border-radius: 5px 5px 10px 10px;
+  background-image: linear-gradient(lightcyan, whitesmoke);
 }
 
 .library-area {
@@ -20,5 +20,20 @@
 .library-snippet {
   height: 200px;
   background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+button {
+  margin: 10px;
+}
+
+.answer-title {
+  background-color: lightsalmon;
+}
+
+.answer-body {
+  background-image: linear-gradient(lightsalmon, whitesmoke);
+}
+.answer-box {
   border-radius: 10px;
 }
