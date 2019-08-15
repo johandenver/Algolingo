@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import "./style.css";
 import { TextInput } from "react-materialize";
 import "whatwg-fetch";
@@ -9,22 +10,29 @@ class LoginRegister extends React.Component {
     super(props);
 
     this.state = {
-      isLogin: true,
-      isRegister: false,
+      form: "login",
+      // isLogin: true,
+      // isRegister: false,
       isLoading: true,
-      token: ""
+      token: "",
+      loggedIn: false
     };
 
     // this.logOut = this.logOut.bind(this);
   }
 
-  showLoginForm() {
-    this.setState({ isLogin: true, isRegister: false });
-  }
+  showForm = form => {
+    this.setState({ form });
+  };
+  // showLoginForm() {
+  //   this.setState({ isLogin: true, isRegister: false });
+  //   //this.setState({form: "login"});
+  // }
 
-  showRegisterForm() {
-    this.setState({ isRegister: true, isLogin: false });
-  }
+  // showRegisterForm() {
+  //   this.setState({ isRegister: true, isLogin: false });
+  //   //this.setState({"form": "register"});
+  // }
 
   componentDidMount() {
     const obj = getFromStorage("the_main_app");
@@ -70,19 +78,19 @@ class LoginRegister extends React.Component {
       return (
         <div className="login-container">
           <div className="box-controller">
-            <div className="controller" onClick={this.showLoginForm.bind(this)}>
+            <div className="controller" onClick={() => this.showForm("login")}>
               Login
             </div>
             <div
               className="controller"
-              onClick={this.showRegisterForm.bind(this)}
+              onClick={() => this.showForm("register")}
             >
               Register
             </div>
           </div>
           <div className="input-container">
-            {this.state.isLogin && <LoginForm />}
-            {this.state.isRegister && <RegisterForm />}
+            {this.state.form === "login" && <LoginForm />}
+            {this.state.form === "register" && <RegisterForm />}
           </div>
         </div>
       );
@@ -95,6 +103,7 @@ class RegisterForm extends React.Component {
     super(props);
     this.state = {
       isLoading: true,
+      isRegistered: false,
       token: "",
       signUpError: "",
       signUpFirstName: "",
@@ -103,45 +112,47 @@ class RegisterForm extends React.Component {
       signUpPassword: ""
     };
 
-    this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(
-      this
-    );
-    this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(
-      this
-    );
-    this.onTextboxChangeSignUpFirstName = this.onTextboxChangeSignUpFirstName.bind(
-      this
-    );
-    this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(
-      this
-    );
+    // this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(
+    //   this
+    // );
+    // this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(
+    //   this
+    // );
+    // this.onTextboxChangeSignUpFirstName = this.onTextboxChangeSignUpFirstName.bind(
+    //   this
+    // );
+    // this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(
+    //   this
+    // );
 
-    this.onSignUp = this.onSignUp.bind(this);
+    // this.onSignUp = this.onSignUp.bind(this);
   }
 
-  onTextboxChangeSignUpEmail(event) {
+  onTextboxChangeSignUpEmail = event => {
     this.setState({
       signUpEmail: event.target.value
     });
-  }
-  onTextboxChangeSignUpPassword(event) {
+  };
+
+  onTextboxChangeSignUpPassword = event => {
     this.setState({
       signUpPassword: event.target.value
     });
-  }
+  };
 
-  onTextboxChangeSignUpFirstName(event) {
+  onTextboxChangeSignUpFirstName = event => {
     this.setState({
       signUpFirstName: event.target.value
     });
-  }
-  onTextboxChangeSignUpLastName(event) {
+  };
+
+  onTextboxChangeSignUpLastName = event => {
     this.setState({
       signUpLastName: event.target.value
     });
-  }
+  };
 
-  onSignUp() {
+  onSignUp = () => {
     // Grab state
     const {
       signUpFirstName,
@@ -169,12 +180,16 @@ class RegisterForm extends React.Component {
       .then(res => res.json())
       .then(json => {
         if (json.success) {
+          //! setInStorage("the_main_app", { token: json.token }); This needs work.
+
           this.setState({
             signUpError: json.message,
             isLoading: false,
             signUpPassword: "",
             signUpFirstName: "",
-            signUpLastName: ""
+            signUpLastName: "",
+            isRegistered: true,
+            token: json.token
           });
         } else {
           this.setState({
@@ -183,7 +198,7 @@ class RegisterForm extends React.Component {
           });
         }
       });
-  }
+  };
 
   render() {
     const {
@@ -191,8 +206,13 @@ class RegisterForm extends React.Component {
       signUpLastName,
       signUpEmail,
       signUpPassword,
-      signUpError
+      signUpError,
+      isRegistered
     } = this.state;
+
+    // if (isRegistered) {
+    //   return <Redirect to="/welcome" />;
+    // }
 
     return (
       <div className="inner-container">
@@ -252,7 +272,8 @@ class LoginForm extends React.Component {
       token: "",
       signInError: "",
       signInEmail: "",
-      signInPassword: ""
+      signInPassword: "",
+      loggedIn: false
     };
 
     this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(
@@ -276,9 +297,11 @@ class LoginForm extends React.Component {
     });
   }
 
-  onSignIn() {
+  onSignIn = () => {
     // Grab state
     const { signInEmail, signInPassword } = this.state;
+    // const { state = {} } = this.props.location;
+    // const { prevLocation } = state;
 
     this.setState({
       isLoading: true
@@ -298,12 +321,14 @@ class LoginForm extends React.Component {
       .then(json => {
         if (json.success) {
           setInStorage("the_main_app", { token: json.token });
+
           this.setState({
             signInError: json.message,
             isLoading: false,
             signInPassword: "",
             signInEmail: "",
-            token: json.token
+            token: json.token,
+            loggedIn: true
           });
         } else {
           this.setState({
@@ -312,10 +337,14 @@ class LoginForm extends React.Component {
           });
         }
       });
-  }
+  };
 
   render() {
-    const { signInEmail, signInPassword, signUpError } = this.state;
+    const { signInEmail, signInPassword, signUpError, loggedIn } = this.state;
+
+    if (loggedIn) {
+      return <Redirect to="/welcome" />;
+    }
 
     return (
       <div className="inner-container">
