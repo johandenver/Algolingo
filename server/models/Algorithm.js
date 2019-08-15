@@ -7,4 +7,6 @@ const algorithmSchema = new Schema({
 	answer: { type: String, required: true }
 });
 
-module.exports = mongoose.model("Algorithm", algorithmSchema);
+const Algorithm = mongoose.model("Algorithm", algorithmSchema);
+
+module.exports = Algorithm;

@@ -1,9 +1,13 @@
-const fs = require("fs");
 const path = require("path");
+const router = require("express").Router();
+const apiRoutes = require("./api");
 
-module.exports = app => {
-	// API routes
-	fs.readdirSync(__dirname + "/api/").forEach(file => {
-		require(`./api/${file.substr(0, file.indexOf("."))}`)(app);
-	});
-};
+// API Routes
+router.use("/api", apiRoutes);
+
+// If no API routes are hit, send the React app
+router.get("/", function(req, res) {
+	res.sendFile(__dirname + "/index.html");
+});
+
+module.exports = router;

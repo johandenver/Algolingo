@@ -12,6 +12,7 @@ const webpackConfig = require("../webpack.config");
 
 const isDev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 8080;
+const routes = require("./routes");
 
 // Configuration
 // ================================================================================================
@@ -25,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // API routes
-require("./routes")(app);
+app.use(routes);
 
 if (isDev) {
   const compiler = webpack(webpackConfig);
