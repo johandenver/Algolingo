@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 30px;
 }
 
 .box-controller {
@@ -14,7 +15,7 @@
   max-width: 24em;
   min-width: 21em;
   height: 35px;
-  background-color: lightcyan;
+  background-image: linear-gradient(to right, coral, white);
   border-radius: 10px 10px 0px 0px;
 }
 
@@ -32,6 +33,6 @@
   max-width: 24em;
   min-width: 21em;
   padding: 30px;
-  background-color: lightcyan;
+  background-image: linear-gradient(lightcyan, whitesmoke);
   border-radius: 0px 0px 10px 10px;
 }

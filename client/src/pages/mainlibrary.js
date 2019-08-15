@@ -9,6 +9,10 @@ class Library extends React.Component {
     algorithms: []
   };
 
+  componentDidMount() {
+    // do an ajax call sending the localStorage.getItem('token');
+    // if the user in not authorized, then do a redirect to sign.
+  }
   // componentDidMount(){
   //   this.loadAlgorithms();
   // }
