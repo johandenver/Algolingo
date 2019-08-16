@@ -3,31 +3,37 @@ import "./style.css";
 import { Collapsible } from "react-materialize";
 import Highlight from "react-highlight";
 import "../../../node_modules/highlight.js/styles/tomorrow-night-bright.css";
+import { FormBtn, TextArea } from "../Form/index";
 // import storage from "../../utils/storage"
 
-function AlgorithmCard() {
+function AlgorithmCard(Algorithm) {
   return (
-    <div className="library-area">
+    <div className="library-area" key={Algorithm._id}>
       <Collapsible className="z-depth-0">
         <li>
           <div className="collapsible-header">
-            <h4>FizzBuzz</h4>
+            <h4 className="algo-title" name="title">
+              (logo) {Algorithm.title}
+            </h4>
           </div>
           <div className="collapsible-body">
             <div className="row">
-              <h5>Description: </h5>
-              <p>
-                Write a short program that prints each number from 1 to 100 on a
-                new line. For each multiple of 3, print 'Fizz' instead of the
-                number. For each multiple of 5, print 'Buzz' instead of the
-                number. For numbers which are multiples of both 3 and 5, print
-                'FizzBuzz' instead of the number.
-              </p>
+              <div className="description-container">
+                <h5>Description: </h5>
+                <p className="algo-description" name="description">
+                  {Algorithm.description}
+                </p>
+              </div>
             </div>
-            <div className="row form-row">
-              <textarea className="library-snippet" />
-            </div>
-            <button
+            <form>
+              <div className="row form-row">
+                <TextArea
+                  id="library-snippet"
+                  name="answer"
+                  placeholder="Code your answer here!"
+                />
+              </div>
+              {/* <button
               type="submit"
               className="btn waves-effect waves-light"
               name="action"
@@ -40,15 +46,13 @@ function AlgorithmCard() {
               name="action"
             >
               edit
-            </button>
-            <button
-              type="submit"
-              className="btn waves-effect waves-light"
-              name="action"
-            >
-              Save to Dashboard
-              <i className="material-icons right">send</i>
-            </button>
+            </button> */}
+
+              <FormBtn type="submit" name="action">
+                Save to Dashboard
+                <i className="material-icons right">send</i>
+              </FormBtn>
+            </form>
             <Collapsible>
               <li>
                 <div className="collapsible-header answer-title">
@@ -56,13 +60,12 @@ function AlgorithmCard() {
                 </div>
                 <div className="collapsible-body answer-body">
                   <div>
+                    <p>
+                      Below is one possible way to solve the {Algorithm.title}{" "}
+                      Algorithm. How does your solution compare?
+                    </p>
                     <Highlight className="Javascript answer-box">
-                      {`for (var i=1; i < 101; i++){
-                  if (i % 15 == 0) console.log("FizzBuzz");
-                  else if (i % 3 == 0) console.log("Fizz");
-                  else if (i % 5 == 0) console.log("Buzz");
-                  else console.log(i);
-                  }`}
+                      {Algorithm.answer}
                     </Highlight>
                   </div>
                 </div>

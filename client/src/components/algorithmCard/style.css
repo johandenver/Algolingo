@@ -13,18 +13,30 @@
   background-image: linear-gradient(lightcyan, whitesmoke);
 }
 
+.description-container {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+
+.algo-description {
+  font-size: 20px;
+}
+
 .library-area {
   margin-top: 15px;
 }
 
-.library-snippet {
+#library-snippet {
   height: 200px;
   background-color: whitesmoke;
   border-radius: 10px;
 }
 
 button {
-  margin: 10px;
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-bottom: 10px;
 }
 
 .answer-title {
