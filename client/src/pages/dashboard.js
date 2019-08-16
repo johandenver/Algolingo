@@ -1,26 +1,51 @@
 import React from "react";
 import Sidenav from "../components/sidenav";
-import Container from "../components/container";
+import SavedCard from "../components/savedCard";
+import CustomCard from "../components/CustomCard";
 
-function Dashboard() {
+class Dashboard extends React.Component {
+  state = {
+    savedAlgorithms: [],
+    userCreated: []
+  };
+
+  componentDidMount() {}
+
+  render() {
     return (
-      
-        <div class="row">
+      <div class="row">
+        <div class="col s12 m4 l3">
+          <Sidenav />
+        </div>
 
-      <div class="col s12 m4 l3">
-        <Sidenav />
+        <div class="col s12 m8 l9">
+          <div className="algo-container">
+            <h3>(Username's) Dashboard!</h3>
+
+            <div className="dashboard-container">
+              <h3>(logo)Your Saved Algorithms</h3>
+              {this.state.savedAlgorithms.length ? (
+                <ul>{this.state.savedAlgorithms.map()}</ul>
+              ) : (
+                <h4>No Results to Display</h4>
+              )}
+              <SavedCard />
+            </div>
+
+            <div className="dashboard-container">
+              <h3> (logo) Custom Algorithm Library:</h3>
+              {this.state.userCreated.length ? (
+                <ul>{this.state.userCreated.map()}</ul>
+              ) : (
+                <h4>No Results to Display</h4>
+              )}
+              <CustomCard />
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="col s12 m8 l9">
-            <Container>
-                <h3>(Username's) Dashboard</h3>
-                <div class="divider"></div>
-                <p>--Apend drop down Cards Here-- (with Algorithms User has created or favorited)</p>
-            </Container>
-      </div>
-
-    </div>
     );
+  }
 }
 
 export default Dashboard;

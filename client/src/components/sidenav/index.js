@@ -168,7 +168,7 @@ class Sidenav extends React.Component {
                   : "nav-link"
               }
             >
-              <i className="material-icons">library_books</i>Main Library
+              <i className="material-icons">library_books</i>AlgoLibrary
             </Link>
           </li>
           <li>
@@ -198,7 +198,8 @@ class Sidenav extends React.Component {
                   : "nav-link"
               }
             >
-              <i className="material-icons">library_add</i>Create Algorithm
+              <i className="material-icons">library_add</i>Create Custom
+              Algorithm
             </Link>
           </li>
           <li>
