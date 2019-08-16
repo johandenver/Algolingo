@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
             <h3>(Username's) Dashboard!</h3>
 
             <div className="dashboard-container">
-              <h3>(logo)Your Saved Algorithms</h3>
+              <h3>(logo) Saved Algorithms:</h3>
               {this.state.savedAlgorithms.length ? (
                 <ul>{this.state.savedAlgorithms.map()}</ul>
               ) : (
@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
             </div>
 
             <div className="dashboard-container">
-              <h3> (logo) Custom Algorithm Library:</h3>
+              <h3> (logo) Custom Create Algorithms:</h3>
               {this.state.userCreated.length ? (
                 <ul>{this.state.userCreated.map()}</ul>
               ) : (
