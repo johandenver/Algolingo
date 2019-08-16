@@ -24,6 +24,13 @@ main {
   border-radius: 10px;
 }
 
+.dashboard-container {
+  background: hsla(27, 78%, 79%, 0.877);
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
 /* .side-nav {
   background-color: lightcyan;
   margin: 15px;
