@@ -206,8 +206,8 @@ class RegisterForm extends React.Component {
       signUpLastName,
       signUpEmail,
       signUpPassword,
-      signUpError,
-      isRegistered
+      signUpError
+      // isRegistered
     } = this.state;
 
     // if (isRegistered) {
