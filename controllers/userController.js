@@ -11,8 +11,8 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
-	findName: function(req, res) {
-		db.User.findById(req.params.id)
+	findUserInfo: function(req, res) {
+		db.User.find({ _id: req.params.id }, { firstName: 1, userAnswers: 1 })
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
