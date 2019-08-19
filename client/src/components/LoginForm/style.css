@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 30px;
+  margin-top: 40px;
 }
 
 .box-controller {
@@ -32,7 +32,7 @@
   flex-direction: column;
   max-width: 24em;
   min-width: 21em;
-  padding: 30px;
+  padding: 15px 30px;
   background-image: linear-gradient(lightcyan, whitesmoke);
   border-radius: 0px 0px 10px 10px;
 }

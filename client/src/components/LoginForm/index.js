@@ -216,7 +216,7 @@ class RegisterForm extends React.Component {
 
     return (
       <div className="inner-container">
-        <div className="box-header">Register</div>
+        <div className="box-header">Please complete to register</div>
         {signUpError ? <p>{signUpError}</p> : null}
         <div className="box">
           <div className="input-group">
@@ -250,6 +250,8 @@ class RegisterForm extends React.Component {
               value={signUpPassword}
               onChange={this.onTextboxChangeSignUpPassword}
             />
+          </div>
+          <div>
             <button
               type="button"
               className="btn waves-effect waves-light light-blue darken-2"
@@ -348,7 +350,7 @@ class LoginForm extends React.Component {
 
     return (
       <div className="inner-container">
-        <div className="box-header">Login</div>
+        <div className="box-header">Please login below</div>
         {signUpError ? <p>{signUpError}</p> : null}
         <div className="box">
           <div className="input-group">
@@ -366,6 +368,8 @@ class LoginForm extends React.Component {
               value={signInPassword}
               onChange={this.onTextboxChangeSignInPassword}
             />
+          </div>
+          <div>
             <button
               type="button"
               className="btn waves-effect waves-light light-blue darken-2"
