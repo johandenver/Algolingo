@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema({
@@ -22,9 +23,12 @@ const UserSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
-	userAnswers: {
-		type: [{}]
-	},
+	userAnswers: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Algorithm"
+		}
+	],
 	customAlgos: {
 		type: [{}]
 	}
