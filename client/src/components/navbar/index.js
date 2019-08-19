@@ -4,11 +4,11 @@ import "./style.css";
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="mainHeader z-depth-0">
       <div className="nav-wrapper z-depth-0">
-        <Link className="navbar-brand" to="/">
-          AlgoLingo Logo
-        </Link>
+        <div className="navbar-brand">
+          <p>AlgoLingo Logo</p>
+        </div>
         {/* <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
                     <Link

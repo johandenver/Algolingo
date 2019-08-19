@@ -13,13 +13,13 @@ function AlgorithmCard(Algorithm) {
         <li>
           <div className="collapsible-header">
             <h5 className="algo-title" name="title">
-              (logo) {Algorithm.title}
+              (logo)Algorithm: {Algorithm.title}
             </h5>
           </div>
           <div className="collapsible-body">
             <div className="row">
               <div className="description-container">
-                <h5>Description: </h5>
+                <h5>{Algorithm.title} Description: </h5>
                 <p className="algo-description" name="description">
                   {Algorithm.description}
                 </p>
@@ -56,7 +56,7 @@ function AlgorithmCard(Algorithm) {
             <Collapsible>
               <li>
                 <div className="collapsible-header answer-title">
-                  <h5>Click here for one Solution!</h5>
+                  <h5>Click here for one {Algorithm.title} solution!</h5>
                 </div>
                 <div className="collapsible-body answer-body">
                   <div>

@@ -168,7 +168,7 @@ class Sidenav extends React.Component {
                   : "nav-link"
               }
             >
-              <i className="material-icons">library_books</i>AlgoLibrary
+              <i className="material-icons">library_books</i> AlgoLibrary
             </Link>
           </li>
           <li>
@@ -183,7 +183,7 @@ class Sidenav extends React.Component {
                   : "nav-link"
               }
             >
-              <i className="material-icons">person</i>Your Dashboard
+              <i className="material-icons">person</i> Your Dashboard
             </Link>
           </li>
           <li>
@@ -198,7 +198,7 @@ class Sidenav extends React.Component {
                   : "nav-link"
               }
             >
-              <i className="material-icons">library_add</i>Create Custom
+              <i className="material-icons">library_add</i> Create Custom
               Algorithm
             </Link>
           </li>
@@ -215,7 +215,7 @@ class Sidenav extends React.Component {
               }
               onClick={this.logOut}
             >
-              <i className="material-icons">exit_to_app</i>Logout
+              <i className="material-icons">exit_to_app</i> Logout
             </Link>
           </li>
         </ul>

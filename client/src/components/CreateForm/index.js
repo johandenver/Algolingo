@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { FormBtn, TextArea } from "../Form/index";
 
 function CreateForm(props) {
   return (
@@ -25,6 +26,11 @@ function CreateForm(props) {
           <div className="input-field col s12">
             <textarea id="textarea1" className="textarea snippet-box" />
             <label for="textarea1">Create Algorithm here!</label>
+            <TextArea
+              id="custom-snippet"
+              name="answer"
+              placeholder="Code your answer here!"
+            />
           </div>
         </div>
         <div className="row form-row">
