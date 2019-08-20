@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { getFromStorage } from "../../utils/storage";
+import logo1 from "../../images/AlgoLingo1.png";
 
 // function Sidenav() {
 //   return (

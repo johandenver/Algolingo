@@ -4,6 +4,7 @@ import "./style.css";
 import { TextInput } from "react-materialize";
 import "whatwg-fetch";
 import { getFromStorage, setInStorage } from "../../utils/storage";
+import logo1 from "../../images/AlgoLingo1.png";
 
 class LoginRegister extends React.Component {
   constructor(props) {
@@ -216,6 +217,7 @@ class RegisterForm extends React.Component {
 
     return (
       <div className="inner-container">
+        <img src={logo1} height="auto" width="150" alt="AlgoLingo" />
         <div className="box-header">Please complete to register</div>
         {signUpError ? <p>{signUpError}</p> : null}
         <div className="box">
@@ -350,7 +352,8 @@ class LoginForm extends React.Component {
 
     return (
       <div className="inner-container">
-        <div className="box-header">Please login below</div>
+        <img src={logo1} height="auto" width="150" alt="AlgoLingo" />
+        <div className="box-header">Please login:</div>
         {signUpError ? <p>{signUpError}</p> : null}
         <div className="box">
           <div className="input-group">

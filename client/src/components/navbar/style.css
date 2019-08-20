@@ -10,12 +10,15 @@
   padding: 5px;
   margin-left: 5px;
   margin-right: 5px;
+  margin-bottom: 10px;
 }
 
 .navbar {
-  background-color: rgba(152, 191, 234, 0.2);
+  background-color: rgba(152, 191, 234, 0);
+  margin-bottom: 15px;
 }
 
 .mainHeader {
-  background-color: rgba(152, 191, 234, 0.2);
+  background-color: rgba(152, 191, 234, 0);
+  margin-bottom: 15px;
 }

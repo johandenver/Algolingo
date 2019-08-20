@@ -4,6 +4,7 @@ import API from "../utils/API";
 // import Container from "../components/container";
 // import { getFromStorage } from "../utils/storage";
 import AlgorithmCard from "../components/algorithmCard";
+import logo2 from "../images/AlgoLingo2.png";
 
 class Library extends React.Component {
   state = {
@@ -31,7 +32,9 @@ class Library extends React.Component {
 
         <div className="col s12 m8 l9">
           <div className="algo-container">
-            <h3>Algorithms</h3>
+            <div className="library-header">
+              <h3> Algorithms</h3>
+            </div>
             <p>
               Cornice T-bar endo, poaching dust on crust clipless McTwist scream
               couloir dope hardtail. Grind clean rigid titanium, poaching huck
@@ -46,7 +49,7 @@ class Library extends React.Component {
             {this.state.algorithms.length ? (
               <ul>{this.state.algorithms.map(AlgorithmCard)}</ul>
             ) : (
-              <h4>No Results to Display</h4>
+              <h4>No Results at this time!</h4>
             )}
           </div>
         </div>

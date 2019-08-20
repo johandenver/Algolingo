@@ -4,6 +4,7 @@ import { Collapsible } from "react-materialize";
 import Highlight from "react-highlight";
 import "../../../node_modules/highlight.js/styles/tomorrow-night-bright.css";
 import { FormBtn, TextArea } from "../Form/index";
+import logo2 from "../../images/AlgoLingo2.png";
 // import storage from "../../utils/storage"
 
 function AlgorithmCard(Algorithm) {
@@ -12,8 +13,9 @@ function AlgorithmCard(Algorithm) {
       <Collapsible className="z-depth-0">
         <li>
           <div className="collapsible-header">
+            <img src={logo2} height="auto" width="40" alt="AlgoLingo" />
             <h5 className="algo-title" name="title">
-              (logo)Algorithm: {Algorithm.title}
+              Algorithm: {Algorithm.title}
             </h5>
           </div>
           <div className="collapsible-body">
@@ -56,6 +58,7 @@ function AlgorithmCard(Algorithm) {
             <Collapsible>
               <li>
                 <div className="collapsible-header answer-title">
+                  <img src={logo2} height="auto" width="40" alt="AlgoLingo" />
                   <h5>Click here for one {Algorithm.title} solution!</h5>
                 </div>
                 <div className="collapsible-body answer-body">
