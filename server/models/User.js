@@ -23,15 +23,8 @@ const UserSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
-	userAnswers: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: "Algorithm"
-		}
-	],
-	customAlgos: {
-		type: [{}]
-	}
+	userAnswers: [],
+	customAlgos: []
 });
 
 UserSchema.methods.generateHash = function(password) {
