@@ -18,16 +18,22 @@ module.exports = {
 	},
 	//using the userId
 	saveAlgo: function(req, res) {
+		console.log("saveAlgo", req.params.id, req.body);
 		db.User.findOneAndUpdate(
 			{ _id: req.params.id },
 			{
 				$push: {
-					userAnswers: {
-						savedId: algorithm._id,
-						savedAnswer: req.body
-					}
+					userAnswers: req.body
 				}
-			}
-		).then(dbModel => res.json(dbModel));
+			},
+			{ new: true, projection: { userAnswers: true } }
+		).then(dbModel => {
+			console.log("dbModel", dbModel);
+			res.json(dbModel);
+		});
 	}
+
+	//update the answer for something the user has already started//
+	//add delete
+	//create
 };
