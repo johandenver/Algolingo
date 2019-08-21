@@ -5,21 +5,20 @@ import Highlight from "react-highlight";
 import "../../../node_modules/highlight.js/styles/tomorrow-night-bright.css";
 import { FormBtn, TextArea } from "../Form/index";
 
-function SavedCard() {
+function SavedCard(savedAlgorithm) {
   return (
     <div
       className="library-area"
-      // key={Algorithm._id}
+      // key={savedAlgorithm._id}
     >
       <Collapsible className="z-depth-0">
         <li>
           <div className="collapsible-header title-header">
             <h5 className="algo-title" name="title">
-              {/* (logo) {Algorithm.title} */}
-              Insert Title here
+              Algorithm: {savedAlgorithm.title}
             </h5>
             <button className="btn waves-effect waves-light delete">
-              <i class="material-icons">delete_forever</i>
+              <i className="material-icons">delete_forever</i>
             </button>
           </div>
           <div className="collapsible-body">
@@ -27,7 +26,7 @@ function SavedCard() {
               <div className="description-container">
                 <h5>Description: </h5>
                 <p className="algo-description" name="description">
-                  {/* {Algorithm.description} */}
+                  {savedAlgorithm.description}
                   insert description here
                 </p>
               </div>
@@ -40,7 +39,7 @@ function SavedCard() {
                 </Highlight>
                 <FormBtn type="submit" name="action">
                   Edit
-                  <i className="material-icons right">send</i>
+                  <i className="material-icons right">edit</i>
                 </FormBtn>
               </div>
             </div>
@@ -69,7 +68,7 @@ function SavedCard() {
 
               <FormBtn type="submit" name="action">
                 Save
-                <i className="material-icons right">send</i>
+                <i className="material-icons right">save</i>
               </FormBtn>
             </form>
             <Collapsible>

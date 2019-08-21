@@ -5,14 +5,19 @@
 }
 
 .form-container {
-  background-color: lightcyan;
+  background-color: lightgrey;
   height: 525px;
   border-radius: 10px;
-  margin: 15px;
-  padding-left: 40px;
-  padding-top: 5px;
+  margin: 5px;
+  padding: 20px;
 }
 
-.form-row {
+/* .form-row {
   margin: 0;
+} */
+
+#custom-snippet {
+  height: 200px;
+  background-color: whitesmoke;
+  border-radius: 10px;
 }

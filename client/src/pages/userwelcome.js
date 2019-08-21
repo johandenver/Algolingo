@@ -1,6 +1,7 @@
 import React from "react";
 import Sidenav from "../components/sidenav";
 import API from "../utils/API";
+import logo2 from "../images/AlgoLingo2.png";
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -28,19 +29,24 @@ class Welcome extends React.Component {
     var value = localStorage.getItem("the_main_app");
     var decoded = JSON.parse(value);
     var userToken = decoded.token;
-    console.log(userToken);
     this.setState({ token: userToken });
-    console.log("getToken method", userToken);
+    console.log("getToken method:", userToken);
     // .then(res => this.setState({ token: res.data.token }))
     // .catch(err => console.log(err));
   };
 
-  getUserId = () => {
-    console.log(this.state);
+  getUserId = token => {
     // not finished with this.
-    API.getUserId()
-      .then(res => this.setState({ userId: res.data.id }))
-      .catch(err => console.log(err));
+    API.getUserId(token)
+      .then(res => {
+        if (res.data) {
+          console.log("userId response:", res);
+          this.setState({
+            userId: res.data.id
+          });
+        }
+      })
+      .catch(err => console.log("userId error", err));
   };
 
   getUser = () => {
@@ -59,25 +65,37 @@ class Welcome extends React.Component {
         </div>
 
         <div className="col s12 m8 l9">
-          <h2>Welcome {this.state.firstName}!</h2>
-          <p>
-            Cornice T-bar endo, poaching dust on crust clipless McTwist scream
-            couloir dope hardtail. Grind clean rigid titanium, poaching huck
-            chain suck hurl carcass frozen chicken heads T-bar huckfest fatty
-            pinner BB. Sucker hole schwag schwag ripper bro travel, dope
-            huckfest. Skinny corn wack clipless bomb hole poaching Skate pillow
-            popping avie cruiser face plant presta. Skid lid bonk hammer frozen
-            chicken heads, grom 180 taco trucks japan air butter heli corduroy
-            spread eagle glades.
-          </p>
+          <div className="algo-container">
+            <div className="library-header">
+              <img
+                className="logo2"
+                src={logo2}
+                height="auto"
+                width="100"
+                alt="AlgoLingo"
+              />
+              <h2>Welcome {this.state.firstName}!</h2>
+            </div>
 
-          <p>
-            Skate flow rail fatty berm. Fully lid white room Whistler snake
-            bite. Face shots carbon death cookies sucker hole rip frozen chicken
-            heads ripper phat reverse camber. Glades mute brain bucket presta.
-            Huckfest shuttle tele, park rat switch stunt taco mitt BB line
-            moguls.
-          </p>
+            <p>
+              Cornice T-bar endo, poaching dust on crust clipless McTwist scream
+              couloir dope hardtail. Grind clean rigid titanium, poaching huck
+              chain suck hurl carcass frozen chicken heads T-bar huckfest fatty
+              pinner BB. Sucker hole schwag schwag ripper bro travel, dope
+              huckfest. Skinny corn wack clipless bomb hole poaching Skate
+              pillow popping avie cruiser face plant presta. Skid lid bonk
+              hammer frozen chicken heads, grom 180 taco trucks japan air butter
+              heli corduroy spread eagle glades.
+            </p>
+
+            <p>
+              Skate flow rail fatty berm. Fully lid white room Whistler snake
+              bite. Face shots carbon death cookies sucker hole rip frozen
+              chicken heads ripper phat reverse camber. Glades mute brain bucket
+              presta. Huckfest shuttle tele, park rat switch stunt taco mitt BB
+              line moguls.
+            </p>
+          </div>
         </div>
       </div>
     );
