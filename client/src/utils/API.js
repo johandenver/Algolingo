@@ -2,6 +2,7 @@
 import axios from "axios";
 
 export default {
+
 	// Gets all algorithms from Algorithms collection
 	getAlgorithms: function() {
 		return axios.get("/api/library");
@@ -15,6 +16,7 @@ export default {
 	showSaved: function(id, algoData) {
 		return axios.post("/api/user/" + id, algoData);
 	}
+
 };
 
 // saveAlgo: function(saveAlgorithm, userId) {

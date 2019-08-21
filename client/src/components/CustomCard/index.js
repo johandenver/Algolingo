@@ -13,13 +13,13 @@ function CustomCard() {
     >
       <Collapsible className="z-depth-0">
         <li>
-          <div className="collapsible-header">
+          <div className="collapsible-header title-header">
             <h5 className="algo-title" name="title">
               {/* (logo) {Algorithm.title} */}
               Insert Users Custom Title here
             </h5>
             <button className="btn waves-effect waves-light delete">
-              X Delete
+              <i class="material-icons">delete_forever</i>
             </button>
           </div>
           <div className="collapsible-body">

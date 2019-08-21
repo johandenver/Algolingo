@@ -12,8 +12,8 @@ function AlgorithmCard(Algorithm) {
     <div className="library-area" key={Algorithm._id}>
       <Collapsible className="z-depth-0">
         <li>
-          <div className="collapsible-header">
-            <img src={logo2} height="auto" width="40" alt="AlgoLingo" />
+          <div className="collapsible-header title-header">
+            {/* <img src={logo2} height="auto" width="45" alt="AlgoLingo" /> */}
             <h5 className="algo-title" name="title">
               Algorithm: {Algorithm.title}
             </h5>
@@ -21,21 +21,32 @@ function AlgorithmCard(Algorithm) {
           <div className="collapsible-body">
             <div className="row">
               <div className="description-container">
-                <h5>{Algorithm.title} Description: </h5>
-                <p className="algo-description" name="description">
-                  {Algorithm.description}
-                </p>
+                <form>
+                  <h5>{Algorithm.title} Description: </h5>
+                  <p className="algo-description" name="description">
+                    {Algorithm.description}
+                  </p>
+                  <TextArea
+                    id="library-snippet"
+                    name="answer"
+                    placeholder="Code your answer here!"
+                  />
+                  <FormBtn type="submit" name="action">
+                    Save to Dashboard
+                    <i className="material-icons right">save</i>
+                  </FormBtn>
+                </form>
               </div>
             </div>
-            <form>
+            {/* <form>
               <div className="row form-row">
                 <TextArea
                   id="library-snippet"
                   name="answer"
                   placeholder="Code your answer here!"
                 />
-              </div>
-              {/* <button
+              </div> */}
+            {/* <button
               type="submit"
               className="btn waves-effect waves-light"
               name="action"
@@ -50,15 +61,21 @@ function AlgorithmCard(Algorithm) {
               edit
             </button> */}
 
-              <FormBtn type="submit" name="action">
+            {/* <FormBtn type="submit" name="action">
                 Save to Dashboard
-                <i className="material-icons right">send</i>
+                <i className="material-icons right">save</i>
               </FormBtn>
-            </form>
-            <Collapsible>
+            </form> */}
+            <Collapsible className="z-depth-0">
               <li>
                 <div className="collapsible-header answer-title">
-                  <img src={logo2} height="auto" width="40" alt="AlgoLingo" />
+                  <img
+                    className="logo2"
+                    src={logo2}
+                    height="auto"
+                    width="45"
+                    alt="AlgoLingo"
+                  />
                   <h5>Click here for one {Algorithm.title} solution!</h5>
                 </div>
                 <div className="collapsible-body answer-body">

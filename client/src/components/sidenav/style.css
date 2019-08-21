@@ -1,5 +1,5 @@
 .side-nav {
-  background-image: linear-gradient(lightcyan, whitesmoke);
+  background: white;
   border-radius: 10px;
   margin: 15px;
   height: 330px;
@@ -8,6 +8,8 @@
 #welcome-menu {
   text-align: center;
   padding: 10px;
+  background-image: linear-gradient(to right, rgb(44, 141, 204), white);
+  border-radius: 10px 10px 0px 0px;
 }
 
 .menu-item {

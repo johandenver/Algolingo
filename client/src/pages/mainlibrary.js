@@ -33,17 +33,24 @@ class Library extends React.Component {
         <div className="col s12 m8 l9">
           <div className="algo-container">
             <div className="library-header">
-              <h3> Algorithms</h3>
+              <img
+                className="logo2"
+                src={logo2}
+                height="auto"
+                width="100"
+                alt="AlgoLingo"
+              />
+              <h2> AlgoLingo Algorithms</h2>
             </div>
             <p>
-              Cornice T-bar endo, poaching dust on crust clipless McTwist scream
-              couloir dope hardtail. Grind clean rigid titanium, poaching huck
-              chain suck hurl carcass frozen chicken heads T-bar huckfest fatty
-              pinner BB. Sucker hole schwag schwag ripper bro travel, dope
-              huckfest. Skinny corn wack clipless bomb hole poaching Skate
-              pillow popping avie cruiser face plant presta. Skid lid bonk
-              hammer frozen chicken heads, grom 180 taco trucks japan air butter
-              heli corduroy spread eagle glades.
+              Try out some Algorithms!! Cornice T-bar endo, poaching dust on
+              crust clipless McTwist scream couloir dope hardtail. Grind clean
+              rigid titanium, poaching huck chain suck hurl carcass frozen
+              chicken heads T-bar huckfest fatty pinner BB. Sucker hole schwag
+              schwag ripper bro travel, dope huckfest. Skinny corn wack clipless
+              bomb hole poaching Skate pillow popping avie cruiser face plant
+              presta. Skid lid bonk hammer frozen chicken heads, grom 180 taco
+              trucks japan air butter heli corduroy spread eagle glades.
             </p>
 
             {this.state.algorithms.length ? (

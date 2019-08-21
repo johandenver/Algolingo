@@ -9,5 +9,9 @@ main {
 }
 
 .page-footer {
-  background-color: grey;
+  background-color: rgb(44, 141, 204);
+}
+
+footer {
+  background-color: rgb(44, 141, 204);
 }
