@@ -11,6 +11,9 @@ export default {
 	},
 	getUser: function(id) {
 		return axios.get("/api/user/" + id);
+	},
+	showSaved: function(id, algoData) {
+		return axios.post("/api/user/" + id, algoData);
 	}
 };
 
