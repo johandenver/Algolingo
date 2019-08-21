@@ -18,19 +18,6 @@ module.exports = {
 		db.UserSession.findById({ _id: req.params.id }).then(dbModel =>
 			res.json(dbModel)
 		);
-	},
-	//using the userId
-	saveAlgo: function(req, res) {
-		db.User.findOneAndUpdate(
-			{ _id: req.params.id },
-			{
-				$push: {
-					userAnswers: {
-						savedId: algorithm._id,
-						savedAnswer: req.body
-					}
-				}
-			}
-		).then(dbModel => res.json(dbModel));
 	}
+	//using the user
 };
