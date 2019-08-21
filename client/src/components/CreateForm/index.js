@@ -1,52 +1,89 @@
 import React from "react";
 import "./style.css";
 import { TextArea } from "../Form/index";
+import { TextInput } from "react-materialize";
 
-function CreateForm(props) {
-  return (
-    <div className="form-container">
-      <form className="form-area col s11">
-        <div className="row form-row">
-          <div className="input-field col s12">
-            <textarea
-              id="textarea1"
-              className="materialize-textarea"
-              onChange={props.handleInputChange}
-            />
-            <label for="textarea1">Title</label>
+class CreateForm extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      title: "",
+      description: "",
+      custom: ""
+    };
+  }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { title, description, custom } = this.state;
+    console.log(
+      "Form was submited.",
+      "title: " + title,
+      "Description: " + description,
+      "Custom Code: " + custom
+    );
+  };
+
+  render() {
+    const { title, description, custom } = this.state;
+    return (
+      <div className="form-container">
+        <form onSubmit={this.handleSubmit}>
+          <div className="row">
+            <div className="input-group">
+              <TextInput
+                name="title"
+                label="Title"
+                type="text"
+                value={title}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row form-row">
-          <div className="input-field col s12">
-            <textarea id="textarea1" className="materialize-textarea" />
-            <label for="textarea1">Description</label>
+          <div className="row">
+            <div className="input-group">
+              <TextInput
+                name="description"
+                label="Description"
+                type="text"
+                value={description}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row form-row">
-          <div className="input-field col s12">
-            <textarea id="textarea1" className="textarea snippet-box" />
-            <label for="textarea1">Create Algorithm here!</label>
-            <TextArea
-              id="custom-snippet"
-              name="answer"
-              placeholder="Code your answer here!"
-            />
+          <div className="row form-row">
+            <div className=" col s12">
+              <TextArea
+                id="custom-snippet"
+                name="custom"
+                placeholder="Create your code here!"
+                require="true"
+                value={custom}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row form-row">
-          <button
-            type="submit"
-            onClick={props.handleFormSubmit}
-            className="btn waves-effect waves-light"
-            name="action"
-          >
-            Submit
-            <i className="material-icons right">send</i>
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+          <div className="row form-row">
+            <button
+              type="submit"
+              value="submit"
+              className="btn waves-effect waves-light"
+              name="action"
+            >
+              Save to Dashboard
+              <i className="material-icons right">save</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default CreateForm;

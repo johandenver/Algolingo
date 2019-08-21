@@ -19,7 +19,7 @@ function CustomCard() {
               Insert Users Custom Title here
             </h5>
             <button className="btn waves-effect waves-light delete">
-              <i class="material-icons">delete_forever</i>
+              <i className="material-icons">delete_forever</i>
             </button>
           </div>
           <div className="collapsible-body">
@@ -40,7 +40,7 @@ function CustomCard() {
                 </Highlight>
                 <FormBtn type="submit" name="action">
                   Edit
-                  <i className="material-icons right">send</i>
+                  <i className="material-icons right">edit</i>
                 </FormBtn>
               </div>
             </div>
@@ -69,7 +69,7 @@ function CustomCard() {
 
               <FormBtn type="submit" name="action">
                 Save
-                <i className="material-icons right">send</i>
+                <i className="material-icons right">save</i>
               </FormBtn>
             </form>
           </div>

@@ -30,6 +30,7 @@ function AlgorithmCard(Algorithm) {
                     id="library-snippet"
                     name="answer"
                     placeholder="Code your answer here!"
+                    require
                   />
                   <FormBtn type="submit" name="action">
                     Save to Dashboard
