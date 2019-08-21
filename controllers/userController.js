@@ -6,8 +6,10 @@ module.exports = {
 	//the token is the objectId of the userSession//
 	findUserId: function(req, res) {
 		console.log(req.params.token);
-		db.UserSession.findById(req.params.id)
-			.then(dbModel => res.json(dbModel))
+		db.UserSession.findById({ _id: req.params.token }, { userId: true })
+			.then(dbModel => {
+				res.json(dbModel);
+			})
 			.catch(err => res.status(422).json(err));
 	},
 
