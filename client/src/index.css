@@ -2,10 +2,29 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: lightgrey;
+
   /* font-family: "Raleway", sans-serif; */
+
+  background-color: lightgrey;
+
+  /* background: rgb(186, 214, 232);
+  background: linear-gradient(
+    0deg,
+    rgba(186, 214, 232, 1) 0%,
+    rgba(128, 198, 244, 1) 48%,
+    rgba(200, 212, 221, 1) 100%
+  ); */
+
+  /* background: rgb(186, 214, 232);
+  background: linear-gradient(
+    218deg,
+    rgba(186, 214, 232, 1) 0%,
+    rgba(238, 90, 31, 1) 50%,
+    rgba(200, 212, 221, 1) 100%
+  ); */
+
   font-family: font70614;
-  /* font-size: 20px; */
+  font-size: 20px;
 }
 
 #page {
@@ -65,4 +84,46 @@ main {
   padding: 15px;
   border-radius: 10px;
   margin-top: 10px;
+}
+
+.library-header {
+  display: flex;
+  align-content: flex-start;
+}
+/* materialize input field colors */
+
+/* label color */
+.input-field label {
+  color: #black;
+}
+/* label focus color */
+.input-field input[type="text"]:focus + label {
+  color: #black;
+}
+/* label underline focus color */
+.input-field input[type="text"]:focus {
+  border-bottom: 1px solid rgb(44, 141, 204) !important;
+  box-shadow: 0 1px 0 0 rgb(44, 141, 204) !important;
+}
+/* valid color */
+.input-field input[type="text"].valid {
+  border-bottom: 1px solid rgb(44, 141, 204) !important;
+  box-shadow: 0 1px 0 0 rgb(44, 141, 204) !important;
+}
+/* invalid color */
+.input-field input[type="text"].invalid {
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 red;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: rgb(44, 141, 204);
+}
+
+button {
+  background-color: rgb(44, 141, 204) !important;
+}
+
+.logo2 {
+  margin: 10px;
 }

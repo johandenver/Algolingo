@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { FormBtn, TextArea } from "../Form/index";
+import { TextArea } from "../Form/index";
 
 function CreateForm(props) {
   return (

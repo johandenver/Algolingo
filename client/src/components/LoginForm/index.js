@@ -80,13 +80,13 @@ class LoginRegister extends React.Component {
         <div className="login-container">
           <div className="box-controller">
             <div className="controller" onClick={() => this.showForm("login")}>
-              Login
+              <h5>Login</h5>
             </div>
             <div
               className="controller"
               onClick={() => this.showForm("register")}
             >
-              Register
+              <h5>Register</h5>
             </div>
           </div>
           <div className="input-container">
@@ -218,7 +218,7 @@ class RegisterForm extends React.Component {
     return (
       <div className="inner-container">
         <img src={logo1} height="auto" width="150" alt="AlgoLingo" />
-        <div className="box-header">Please complete to register</div>
+        <div className="box-header">Please register:</div>
         {signUpError ? <p>{signUpError}</p> : null}
         <div className="box">
           <div className="input-group">

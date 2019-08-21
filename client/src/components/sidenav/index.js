@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { getFromStorage } from "../../utils/storage";
-import logo1 from "../../images/AlgoLingo1.png";
+// import logo1 from "../../images/AlgoLingo1.png";
 
 // function Sidenav() {
 //   return (
@@ -154,7 +154,7 @@ class Sidenav extends React.Component {
                   : "nav-link"
               }
             >
-              Welcome to AlgoLingo
+              <h5>Welcome to AlgoLingo</h5>
             </Link>
           </li>
           <li>

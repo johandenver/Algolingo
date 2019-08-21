@@ -3,14 +3,15 @@
   border-radius: 10px;
 }
 
-.collapsible-header {
+.title-header {
   border-radius: 10px;
-  background-color: lightcyan;
+  background-image: linear-gradient(to right, white, rgb(44, 141, 204));
 }
 
 .collapsible-body {
   border-radius: 5px 5px 10px 10px;
-  background-image: linear-gradient(lightcyan, whitesmoke);
+  background-image: linear-gradient(rgb(44, 141, 204), whitesmoke);
+  padding: 30px;
 }
 
 .description-container {
@@ -40,11 +41,15 @@ button {
 }
 
 .answer-title {
-  background-color: lightsalmon;
+  background-color: rgb(238, 90, 31);
+  border-radius: 10px;
+  color: white;
 }
 
 .answer-body {
-  background-image: linear-gradient(lightsalmon, whitesmoke);
+  background-image: linear-gradient(rgb(238, 90, 31), whitesmoke);
+  color: white;
+  font-size: 20px;
 }
 .answer-box {
   border-radius: 10px;
