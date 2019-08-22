@@ -2,7 +2,6 @@
 import axios from "axios";
 
 export default {
-
 	// Gets all algorithms from Algorithms collection
 	getAlgorithms: function() {
 		return axios.get("/api/library");
@@ -15,12 +14,9 @@ export default {
 	},
 	showSaved: function(id, algoData) {
 		return axios.post("/api/user/" + id, algoData);
+	},
+
+	showAnswer: function(id) {
+		return axios.get("/api/user/" + id + "/answer");
 	}
-
 };
-
-// saveAlgo: function(saveAlgorithm, userId) {
-// 	reurn axios.post("/api/books/" + userId, algoData)
-// }
-
-//use a mongo query to look at localStorage's userId'

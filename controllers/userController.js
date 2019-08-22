@@ -38,14 +38,28 @@ module.exports = {
 		});
 	},
 
-	updateAnswer: function(req, res) {
-		console.log("updateAnswer", req.params.id, req.body);
-		db.User.findOneAndUpdate({
-			_id: req.params.id
+	showAnswer: function(req, res) {
+		db.User.findById(req.params.id).then(user => {
+			var answers = user.userAnswers;
+			console.log("answers", answers);
+			// console.log("saved answer", answer.savedAnswer);
+			var promises = answers.map(answer => {
+				console.log("answer savedID", answer.savedId);
+				return db.Algorithm.findOne({ _id: answer.savedId })
+					.lean()
+					.then(algorithm => {
+						algorithm.savedAnswer = answer.savedAnswer;
+						console.log(
+							"algorithm.savedAnswer",
+							algorithm.savedAnswer
+						);
+						console.log("saved answer", answer.savedAnswer);
+						console.log("algorithm", algorithm);
+						return algorithm;
+					});
+			});
+			// console.log("promises", promises);
+			Promise.all(promises).then(dbModel => res.json(dbModel));
 		});
 	}
-
-	//update the answer for something the user has already started//
-	//add delete
-	//create
 };
