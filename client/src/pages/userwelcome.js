@@ -9,55 +9,43 @@ class Welcome extends React.Component {
     this.state = {
       token: "",
       userId: "",
-      userInfo: [],
       firstName: ""
     };
   }
-  // state = {
-  //   token: "",
-  //   userId: "",
-  //   userInfo: [],
-  //   firstName: ""
-  // };
 
   componentDidMount() {
     this.getToken();
-    this.getUserId();
-    this.getUser();
   }
   getToken = () => {
     var value = localStorage.getItem("the_main_app");
     var decoded = JSON.parse(value);
     var userToken = decoded.token;
-    this.setState({ token: userToken });
-    console.log("getToken method:", userToken);
-    // .then(res => this.setState({ token: res.data.token }))
-    // .catch(err => console.log(err));
-  };
 
-  getUserId = token => {
-    // not finished with this.
-    API.getUserId(token)
+    // console.log("getToken method:", userToken);
+
+    API.getUserId(userToken)
       .then(res => {
         if (res.data) {
-          console.log("userId response:", res);
+          // console.log("userId response:", res);
           this.setState({
-            userId: res.data.id
+            token: userToken,
+            userId: res.data.userId
+          });
+          API.getUser(res.data.userId).then(res => {
+            // console.log("res", res);
+            this.setState({
+              firstName:
+                res.data.firstName.substring(0, 1).toUpperCase() +
+                res.data.firstName.substring(1)
+            });
           });
         }
       })
       .catch(err => console.log("userId error", err));
   };
 
-  getUser = () => {
-    API.getUser()
-      .then(res =>
-        this.setState({ userInfo: res.data, firstName: res.data.firstName })
-      )
-      .catch(err => console.log(err));
-  };
-
   render() {
+    // console.log("our state is", this.state);
     return (
       <div className="row">
         <div className="col s12 m4 l3">
