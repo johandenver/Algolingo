@@ -7,9 +7,12 @@ import AlgorithmCard from "../components/algorithmCard";
 import logo2 from "../images/AlgoLingo2.png";
 
 class Library extends React.Component {
-  state = {
-    algorithms: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      algorithms: []
+    };
+  }
 
   componentDidMount() {
     this.loadAlgorithms();
@@ -24,6 +27,8 @@ class Library extends React.Component {
   };
 
   render() {
+    // console.log("Welcome Page state is", this.state);
+    console.log(this.props);
     return (
       <div className="row">
         <div className="col s12 m4 l3">
@@ -54,7 +59,14 @@ class Library extends React.Component {
             </p>
 
             {this.state.algorithms.length ? (
-              <ul>{this.state.algorithms.map(AlgorithmCard)}</ul>
+              <ul>
+                {this.state.algorithms.map(algorithm => (
+                  <AlgorithmCard
+                    algorithm={algorithm}
+                    saveUserAlgorithm={this.props.saveUserAlgorithm}
+                  />
+                ))}
+              </ul>
             ) : (
               <h4>No Results at this time!</h4>
             )}
