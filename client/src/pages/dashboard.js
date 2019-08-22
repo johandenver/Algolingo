@@ -51,18 +51,17 @@ class Dashboard extends React.Component {
   };
 
   loadSavedAlgorithms = () => {
-    const userId = this.state.userId;
-
-    API.getUser(userId)
-      .then(res => {
-        console.log("res", res);
-        if (res.data) {
-          this.setState({
-            savedAlgorithms: res.data
-          });
-        }
-      })
-      .catch(err => console.log(err));
+    // const userId = this.state.userId;
+    // API.showAnswer(userId)
+    // .then(res => {
+    //   console.log("res", res);
+    //   if (res.data) {
+    //     this.setState({
+    //       savedAlgorithms: res.data
+    //     });
+    //   }
+    // })
+    // .catch(err => console.log(err));
   };
 
   render() {
@@ -89,10 +88,18 @@ class Dashboard extends React.Component {
                 <h2>Saved Algorithms:</h2>
               </div>
               {this.state.savedAlgorithms.length ? (
-                <ul>{this.state.savedAlgorithms.map(SavedCard)}</ul>
+                <ul>
+                  {this.state.savedAlgorithms.map(savedAlgorithm => (
+                    <SavedCard
+                      savedAlgorithm={savedAlgorithm}
+                      // loadSavedAlgorithms={this.loadSavedAlgorithms}
+                    />
+                  ))}
+                </ul>
               ) : (
                 <p>You have not yet saved any Algorithms from the Library</p>
               )}
+              <p>The below card is hardcoded for styling purposes:</p>
               <SavedCard />
             </div>
 
@@ -113,6 +120,7 @@ class Dashboard extends React.Component {
               ) : (
                 <p>You have not yet created any Custom Algorithms</p>
               )}
+              <p>The below card is hardcoded for styling purposes:</p>
               <CustomCard />
             </div>
           </div>
