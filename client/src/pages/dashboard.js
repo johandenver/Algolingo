@@ -6,19 +6,56 @@ import API from "../utils/API";
 import logo2 from "../images/AlgoLingo2.png";
 
 class Dashboard extends React.Component {
-  state = {
-    savedAlgorithms: [],
-    userCreated: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      savedAlgorithms: [],
+      userCreated: [],
+      token: "",
+      userId: "",
+      firstName: ""
+    };
+  }
 
   componentDidMount() {
+    this.getToken();
     this.loadSavedAlgorithms();
   }
 
-  loadSavedAlgorithms = id => {
-    API.getUser(id)
+  getToken = () => {
+    var value = localStorage.getItem("the_main_app");
+    var decoded = JSON.parse(value);
+    var userToken = decoded.token;
+
+    // console.log("getToken method:", userToken);
+
+    API.getUserId(userToken)
       .then(res => {
-        // console.log(res);
+        if (res.data) {
+          // console.log("userId response:", res);
+          this.setState({
+            token: userToken,
+            userId: res.data.userId
+          });
+          API.getUser(res.data.userId).then(res => {
+            // console.log("res", res);
+            this.setState({
+              firstName:
+                res.data.firstName.substring(0, 1).toUpperCase() +
+                res.data.firstName.substring(1)
+            });
+          });
+        }
+      })
+      .catch(err => console.log("userId error", err));
+  };
+
+  loadSavedAlgorithms = () => {
+    const userId = this.state.userId;
+
+    API.getUser(userId)
+      .then(res => {
+        console.log("res", res);
         if (res.data) {
           this.setState({
             savedAlgorithms: res.data
@@ -29,6 +66,7 @@ class Dashboard extends React.Component {
   };
 
   render() {
+    console.log("Dashboard page state is", this.state);
     return (
       <div className="row">
         <div className="col s12 m4 l3">
@@ -37,7 +75,7 @@ class Dashboard extends React.Component {
 
         <div className="col s12 m8 l9">
           <div className="algo-container">
-            <h3>(Username's) Dashboard!</h3>
+            <h3>{this.state.firstName}'s Dashboard!</h3>
 
             <div className="dashboard-container">
               <div className="library-header">

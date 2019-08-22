@@ -4,6 +4,8 @@
 }
 
 .title-header {
+  display: flex;
+  justify-content: space-between;
   border-radius: 10px;
   background-image: linear-gradient(to right, white, rgb(44, 141, 204));
 }

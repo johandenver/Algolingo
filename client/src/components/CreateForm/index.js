@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./style.css";
 import { TextArea } from "../Form/index";
 import { TextInput } from "react-materialize";
+import API from "../../utils/API";
 
 class CreateForm extends React.Component {
   constructor() {
@@ -29,15 +30,21 @@ class CreateForm extends React.Component {
       "Description: " + description,
       "Custom Code: " + custom
     );
-    // this.routeChange();
+
+    API.showSaved().post(() => {
+      // console.log();
+    });
   };
 
-  routeChange = () => {
-    let path = `/dashboard`;
-    this.props.history.push(path);
-  };
+  // this.routeChange();
+
+  // routeChange = () => {
+  //   let path = `/dashboard`;
+  //   this.props.history.push(path);
+  // };
 
   render() {
+    console.log("Custom Form state is", this.state);
     const { title, description, custom } = this.state;
     return (
       <div>

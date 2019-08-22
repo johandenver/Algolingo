@@ -7,10 +7,7 @@ import { FormBtn, TextArea } from "../Form/index";
 
 function SavedCard(savedAlgorithm) {
   return (
-    <div
-      className="library-area"
-      // key={savedAlgorithm._id}
-    >
+    <div className="library-area" key={savedAlgorithm._id}>
       <Collapsible className="z-depth-0">
         <li>
           <div className="collapsible-header title-header">
@@ -34,8 +31,8 @@ function SavedCard(savedAlgorithm) {
               <div>
                 <p>Your saved Algorithm:</p>
                 <Highlight className="Javascript answer-box">
-                  {/* {Algorithm.answer} */}
-                  {`Var exampleCode = "your saved code"`}
+                  {savedAlgorithm.answer}
+                  {/* {`Var exampleCode = "your saved code"`} */}
                 </Highlight>
                 <FormBtn type="submit" name="action">
                   Edit
@@ -51,20 +48,6 @@ function SavedCard(savedAlgorithm) {
                   placeholder="Code your answer here!"
                 />
               </div>
-              {/* <button
-                type="submit"
-                className="btn waves-effect waves-light"
-                name="action"
-              >
-                preview
-              </button> */}
-              {/* <button
-                type="submit"
-                className="btn waves-effect waves-light"
-                name="action"
-              >
-                edit
-              </button> */}
 
               <FormBtn type="submit" name="action">
                 Save
@@ -80,11 +63,11 @@ function SavedCard(savedAlgorithm) {
                   <div>
                     <p>
                       Below is one possible way to solve the
-                      {/* {Algorithm.title}{" "} */}
-                      Algorithm. How does your solution compare?
+                      {savedAlgorithm.title} Algorithm. How does your solution
+                      compare?
                     </p>
                     <Highlight className="Javascript answer-box">
-                      {/* {Algorithm.answer} */}
+                      {savedAlgorithm.answer}
                       {`Var answerCode = "our provided answer"`}
                     </Highlight>
                   </div>
