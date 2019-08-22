@@ -7,5 +7,5 @@ router
 	.route("/:id")
 	.get(userController.findUserInfo)
 	.post(userController.saveAlgo);
-
+router.route("/:id/answer").get(userController.showAnswer);
 module.exports = router;
