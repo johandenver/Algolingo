@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import "./style.css";
 import { TextArea } from "../Form/index";
 import { TextInput } from "react-materialize";
@@ -28,62 +29,71 @@ class CreateForm extends React.Component {
       "Description: " + description,
       "Custom Code: " + custom
     );
+    // this.routeChange();
+  };
+
+  routeChange = () => {
+    let path = `/dashboard`;
+    this.props.history.push(path);
   };
 
   render() {
     const { title, description, custom } = this.state;
     return (
-      <div className="form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="row">
-            <div className="input-group">
-              <TextInput
-                name="title"
-                label="Title"
-                type="text"
-                value={title}
-                onChange={this.handleChange}
-              />
+      <div>
+        <div className="form-container">
+          <form onSubmit={this.handleSubmit}>
+            <div className="row">
+              <div className="input-group">
+                <TextInput
+                  name="title"
+                  label="Title"
+                  type="text"
+                  value={title}
+                  onChange={this.handleChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="input-group">
-              <TextInput
-                name="description"
-                label="Description"
-                type="text"
-                value={description}
-                onChange={this.handleChange}
-              />
+            <div className="row">
+              <div className="input-group">
+                <TextInput
+                  name="description"
+                  label="Description"
+                  type="text"
+                  value={description}
+                  onChange={this.handleChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row form-row">
-            <div className=" col s12">
-              <TextArea
-                id="custom-snippet"
-                name="custom"
-                placeholder="Create your code here!"
-                require="true"
-                value={custom}
-                onChange={this.handleChange}
-              />
+            <div className="row form-row">
+              <div className=" col s12">
+                <TextArea
+                  id="custom-snippet"
+                  name="custom"
+                  placeholder="Create your code here!"
+                  require="true"
+                  value={custom}
+                  onChange={this.handleChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className="row form-row">
-            <button
-              type="submit"
-              value="submit"
-              className="btn waves-effect waves-light"
-              name="action"
-            >
-              Save to Dashboard
-              <i className="material-icons right">save</i>
-            </button>
-          </div>
-        </form>
+            <div className="row form-row">
+              <button
+                type="submit"
+                value="submit"
+                className="btn waves-effect waves-light"
+                name="action"
+                // onClick={this.routeChange}
+              >
+                Save to Dashboard
+                <i className="material-icons right">save</i>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
 }
 
-export default CreateForm;
+export default withRouter(CreateForm);

@@ -53,7 +53,7 @@ class Dashboard extends React.Component {
               {this.state.savedAlgorithms.length ? (
                 <ul>{this.state.savedAlgorithms.map(SavedCard)}</ul>
               ) : (
-                <h4>No Results to Display</h4>
+                <p>You have not yet saved any Algorithms from the Library</p>
               )}
               <SavedCard />
             </div>
@@ -73,7 +73,7 @@ class Dashboard extends React.Component {
               {this.state.userCreated.length ? (
                 <ul>{this.state.userCreated.map()}</ul>
               ) : (
-                <h5>You have not yet created any Custom Algoritms</h5>
+                <p>You have not yet created any Custom Algorithms</p>
               )}
               <CustomCard />
             </div>
