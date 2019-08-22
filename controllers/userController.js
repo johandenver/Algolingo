@@ -14,7 +14,10 @@ module.exports = {
 	},
 
 	findUserInfo: function(req, res) {
-		db.User.find({ _id: req.params.id }, { firstName: 1, userAnswers: 1 })
+		db.User.findOne(
+			{ _id: req.params.id },
+			{ firstName: 1, userAnswers: 1 }
+		)
 			.then(dbModel => res.json(dbModel))
 			.catch(err => res.status(422).json(err));
 	},
@@ -32,6 +35,13 @@ module.exports = {
 		).then(dbModel => {
 			console.log("dbModel", dbModel);
 			res.json(dbModel);
+		});
+	},
+
+	updateAnswer: function(req, res) {
+		console.log("updateAnswer", req.params.id, req.body);
+		db.User.findOneAndUpdate({
+			_id: req.params.id
 		});
 	}
 
