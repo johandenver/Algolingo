@@ -11,19 +11,23 @@ class SavedCard extends React.Component {
     super(props);
     this.state = {};
   }
+
   render() {
-    // const { savedAlgorithm } = this.props;
+    const { savedAlgorithm } = this.props;
+    // console.log(savedAlgorithm);
+    // console.log("props: ", this.props);
+    // console.log({ savedAlgorithm });
     return (
       <div
         className="library-area"
-        // key={savedAlgorithm._id}
+        // key={savedAlgorithm.id}
       >
         <Collapsible className="z-depth-0">
           <li>
             <div className="collapsible-header title-header">
-              <h5 className="algo-title" name="title">
+              <h5 className="algo-title">
                 Algorithm:
-                {/* {savedAlgorithm.title} */}
+                {savedAlgorithm.title}
               </h5>
               <button className="btn waves-effect waves-light delete">
                 <i className="material-icons">delete_forever</i>
@@ -34,15 +38,14 @@ class SavedCard extends React.Component {
                 <div className="description-container">
                   <h5>Description: </h5>
                   <p className="algo-description" name="description">
-                    {/* {savedAlgorithm.description} */}
-                    insert description here
+                    {savedAlgorithm.description}
                   </p>
                 </div>
                 {/* Add some sort of switch from the highlighted code to editable code: */}
                 <div>
                   <p>Your saved Algorithm:</p>
                   <Highlight className="Javascript answer-box">
-                    {/* {savedAlgorithm.answer} */}
+                    {savedAlgorithm.savedAnswer}
                     {/* {`Var exampleCode = "your saved code"`} */}
                   </Highlight>
                   <FormBtn type="submit" name="action">
@@ -74,11 +77,11 @@ class SavedCard extends React.Component {
                     <div>
                       <p>
                         Below is one possible way to solve the
-                        {/* {savedAlgorithm.title}  */}
+                        {savedAlgorithm.title}
                         Algorithm. How does your solution compare?
                       </p>
                       <Highlight className="Javascript answer-box">
-                        {/* {savedAlgorithm.answer} */}
+                        {savedAlgorithm.answer}
                         {`Var answerCode = "our provided answer"`}
                       </Highlight>
                     </div>
