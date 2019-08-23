@@ -18,5 +18,9 @@ export default {
 
 	showAnswer: function(id) {
 		return axios.get("/api/user/" + id + "/answer");
+	},
+
+	updateAnswer: function(id, algoData) {
+		return axios.post("api/user/" + id + "/answer", algoData);
 	}
 };
