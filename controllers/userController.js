@@ -72,6 +72,18 @@ module.exports = {
 			// { projection: { userAnswers: true } }
 		).then(dbModel => res.json(dbModel));
 		// console.log(dbModel);
+	},
+
+	deleteSaved: function(req, res) {
+		db.User.updateOne(
+			{ _id: req.params.id, "userAnswers.savedId": req.body.savedId },
+			{
+				$pull: {
+					userAnswers: req.body
+				}
+			},
+			{ new: true, projection: { userAnswers: true } }
+		).then(dbModel => res.json(dbModel));
 	}
 
 	//Add a delete method//

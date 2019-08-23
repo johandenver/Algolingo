@@ -11,4 +11,6 @@ router
 	.route("/:id/answer")
 	.get(userController.showAnswer)
 	.post(userController.updateAnswer);
+
+router.route("/:id/remove").post(userController.deleteSaved);
 module.exports = router;
