@@ -14,7 +14,7 @@ class AlgorithmCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userAnswer: ""
+      savedAnswer: ""
     };
   }
 
@@ -22,15 +22,15 @@ class AlgorithmCard extends React.Component {
     // give to to text box
     // update state with value
     this.setState({
-      userAnswer: e.target.value
+      savedAnswer: e.target.value
     });
   };
 
   onSubmit = e => {
     e.preventDefault();
     this.props.saveUserAlgorithm({
-      saveId: this.props.algorithm._id,
-      userAnswer: this.state.userAnswer
+      savedId: this.props.algorithm._id,
+      savedAnswer: this.state.savedAnswer
     });
   };
 
@@ -59,7 +59,7 @@ class AlgorithmCard extends React.Component {
                     <TextArea
                       id="library-snippet"
                       name="answer"
-                      value={this.state.userAnswer}
+                      value={this.state.savedAnswer}
                       onChange={this.onChange}
                       placeholder="Code your answer here!"
                       require="true"

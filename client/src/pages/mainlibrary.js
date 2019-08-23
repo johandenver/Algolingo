@@ -28,7 +28,7 @@ class Library extends React.Component {
 
   render() {
     // console.log("Welcome Page state is", this.state);
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="row">
         <div className="col s12 m4 l3">
@@ -62,6 +62,7 @@ class Library extends React.Component {
               <ul>
                 {this.state.algorithms.map(algorithm => (
                   <AlgorithmCard
+                    key={algorithm._id}
                     algorithm={algorithm}
                     saveUserAlgorithm={this.props.saveUserAlgorithm}
                   />

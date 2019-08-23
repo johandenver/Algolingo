@@ -46,12 +46,12 @@ class App extends React.Component {
             token: userToken,
             userId: res.data.userId
           });
-          API.getUser(res.data.userId).then(res => {
-            // console.log("res", res);
+          API.getUser(res.data.userId).then(response => {
+            // console.log("res", response);
             this.setState({
               firstName:
-                res.data.firstName.substring(0, 1).toUpperCase() +
-                res.data.firstName.substring(1)
+                response.data.firstName.substring(0, 1).toUpperCase() +
+                response.data.firstName.substring(1)
             });
           });
         }
@@ -59,16 +59,19 @@ class App extends React.Component {
       .catch(err => console.log("userId error", err));
   };
 
+  // function to save the user algorithm from the main library:
   saveUserAlgorithm = algorithm => {
     API.showSaved(this.state.userId, algorithm)
       .then(() => {
         // redirect somewhere
+        console.log(algorithm);
         console.log("it worked");
       })
       .catch(err => console.error("bad", err));
   };
 
   render() {
+    console.log(this.state.userId);
     return (
       <div id="page">
         <Router>
@@ -83,7 +86,9 @@ class App extends React.Component {
               <Route
                 path="/welcome"
                 loggedIn={this.state.loggedIn}
-                component={Welcome}
+                render={props => (
+                  <Welcome {...props} firstName={this.state.firstName} />
+                )}
               />
               <Route
                 path="/library"
@@ -97,8 +102,19 @@ class App extends React.Component {
               />
               <Route
                 path="/dashboard"
+                userId={this.state.userId}
                 loggedIn={this.state.loggedIn}
-                component={Dashboard}
+                render={props =>
+                  this.state.userId ? (
+                    <Dashboard
+                      {...props}
+                      userId={this.state.userId}
+                      firstName={this.state.firstName}
+                    />
+                  ) : (
+                    <div>nothing</div>
+                  )
+                }
               />
               <Route
                 path="/create"

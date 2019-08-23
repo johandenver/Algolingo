@@ -1,48 +1,13 @@
 import React from "react";
 import Sidenav from "../components/sidenav";
-import API from "../utils/API";
+// import API from "../utils/API";
 import logo2 from "../images/AlgoLingo2.png";
 
 class Welcome extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      token: "",
-      userId: "",
-      firstName: ""
-    };
+    this.state = {};
   }
-
-  componentDidMount() {
-    this.getToken();
-  }
-  getToken = () => {
-    var value = localStorage.getItem("the_main_app");
-    var decoded = JSON.parse(value);
-    var userToken = decoded.token;
-
-    // console.log("getToken method:", userToken);
-
-    API.getUserId(userToken)
-      .then(res => {
-        if (res.data) {
-          // console.log("userId response:", res);
-          this.setState({
-            token: userToken,
-            userId: res.data.userId
-          });
-          API.getUser(res.data.userId).then(res => {
-            // console.log("res", res);
-            this.setState({
-              firstName:
-                res.data.firstName.substring(0, 1).toUpperCase() +
-                res.data.firstName.substring(1)
-            });
-          });
-        }
-      })
-      .catch(err => console.log("userId error", err));
-  };
 
   render() {
     // console.log("our state is", this.state);
@@ -62,7 +27,7 @@ class Welcome extends React.Component {
                 width="100"
                 alt="AlgoLingo"
               />
-              <h2>Welcome {this.state.firstName}!</h2>
+              <h2>Welcome {this.props.firstName}!</h2>
             </div>
 
             <p>
