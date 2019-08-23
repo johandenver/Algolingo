@@ -21,6 +21,10 @@ export default {
 	},
 
 	updateAnswer: function(id, algoData) {
-		return axios.post("api/user/" + id + "/answer", algoData);
+		return axios.post("/api/user/" + id + "/answer", algoData);
+	},
+
+	deleteSaved: function(id, algoId) {
+		return axios.post("/api.user/" + id + "/remove", algoId);
 	}
 };
