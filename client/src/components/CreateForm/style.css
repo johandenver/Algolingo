@@ -5,7 +5,7 @@
 }
 
 .form-container {
-  background-color: whitesmoke;
+  background: rgba(255, 255, 255, 0.5);
   height: 525px;
   border-radius: 10px;
   margin: 5px;

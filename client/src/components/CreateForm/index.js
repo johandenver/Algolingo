@@ -54,7 +54,7 @@ class CreateForm extends React.Component {
               <div className="input-group">
                 <TextInput
                   name="title"
-                  label="Title"
+                  label="Algorithm Title:"
                   type="text"
                   value={title}
                   onChange={this.handleChange}
@@ -65,7 +65,7 @@ class CreateForm extends React.Component {
               <div className="input-group">
                 <TextInput
                   name="description"
-                  label="Description"
+                  label="Algorithm Description:"
                   type="text"
                   value={description}
                   onChange={this.handleChange}
@@ -77,7 +77,7 @@ class CreateForm extends React.Component {
                 <TextArea
                   id="custom-snippet"
                   name="custom"
-                  placeholder="Create your code here!"
+                  placeholder="Code your Algorithm here!"
                   require="true"
                   value={custom}
                   onChange={this.handleChange}

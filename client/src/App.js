@@ -19,7 +19,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       loggedIn: false,
-      token: "",
+      token: "help",
       userId: "",
       firstName: ""
     };
@@ -28,6 +28,14 @@ class App extends React.Component {
   login = input => {
     this.setState({ loggedIn: input });
   };
+
+  // setLocal = () => {
+  //   localStorage.setItem("the_main_app", this.state.token);
+  // };
+
+  // componentWillMount() {
+  //   this.setLocal();
+  // }
 
   componentDidMount() {
     // this.getToken();

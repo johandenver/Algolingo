@@ -17,18 +17,12 @@ class Dashboard extends React.Component {
 
   // componentDidUpdate(prevProps) {
   //   console.log("ComponentDidUpdate: ", this.props.userId);
-
-  //   // console.log(
-  //   //   "user id: ",
-  //   //   prevProps.userId,
-  //   //   " this props:   ",
-  //   //   this.props.userId
-  //   // );
-  //   // if (this.props.userId !== prevProps.userId) {
-  //   //   // console.log(this.props.userId);
-  //   //   this.loadSavedAlgorithms(this.props.userId);
-  //   // }
+  //   if (this.props.userId !== prevProps.userId) {
+  //     console.log(this.props.userId);
+  //     this.loadSavedAlgorithms(this.props.userId);
+  //   }
   // }
+
   componentDidMount() {
     // console.log("Component did mount: ", this.props.userId);
     // if (this.props.userId) {
@@ -78,8 +72,10 @@ class Dashboard extends React.Component {
                   width="100"
                   alt="AlgoLingo"
                 />
-                <h2>Saved Algorithms:</h2>
+                <h2>Saved Algorithms</h2>
               </div>
+              <h4>Your library of saved Algolingo Algorithms:</h4>
+
               {this.state.savedAlgorithms.length ? (
                 <ul>
                   {this.state.savedAlgorithms.map(savedAlgorithm => (
@@ -92,7 +88,7 @@ class Dashboard extends React.Component {
                   ))}
                 </ul>
               ) : (
-                <p>You have not yet saved any Algorithms from the Library</p>
+                <p>You have not yet saved any Algorithms from the Library.</p>
               )}
               {/* <p>The below card is hardcoded for styling purposes:</p>
               <SavedCard /> */}
@@ -107,16 +103,18 @@ class Dashboard extends React.Component {
                   width="100"
                   alt="AlgoLingo"
                 />
-                <h2>Custom Algorithms:</h2>
+                <h2>Custom Algorithms</h2>
               </div>
+              <h4>Your own library of custom created Algorithms:</h4>
 
               {this.state.userCreated.length ? (
                 <ul>{this.state.userCreated.map()}</ul>
               ) : (
-                <p>You have not yet created any Custom Algorithms</p>
+                <p>You have not yet created any Custom Algorithms.</p>
               )}
-              <p>The below card is hardcoded for styling purposes:</p>
-              <CustomCard />
+
+              {/* <p>The below card is hardcoded for styling purposes:</p>
+              <CustomCard /> */}
             </div>
           </div>
         </div>
