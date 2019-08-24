@@ -22,10 +22,7 @@ const routes = require("./routes");
 mongoose.Promise = global.Promise;
 mongoose.connect(
   process.env.MONGODB_URI ||
-    "mongodb://algouser:algouser1@ds051605.mlab.com:51605/heroku_4dx7r16z",
-  {
-    useMongoClient: true
-  }
+    "mongodb://algouser:algouser1@ds135217.mlab.com:35217/heroku_b8swn9zt"
 );
 const app = express();
 app.use(express.urlencoded({ extended: true }));
