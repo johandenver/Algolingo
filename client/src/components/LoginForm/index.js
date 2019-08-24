@@ -90,7 +90,9 @@ class LoginRegister extends React.Component {
             </div>
           </div>
           <div className="input-container">
-            {this.state.form === "login" && <LoginForm />}
+            {this.state.form === "login" && (
+              <LoginForm checkLog={this.props.checkLog} />
+            )}
             {this.state.form === "register" && <RegisterForm />}
           </div>
         </div>
@@ -301,6 +303,10 @@ class LoginForm extends React.Component {
     });
   }
 
+  handleChange = () => {
+    this.props.checkLog(true);
+  };
+
   onSignIn = () => {
     // Grab state
     const { signInEmail, signInPassword } = this.state;
@@ -334,6 +340,7 @@ class LoginForm extends React.Component {
             token: json.token,
             loggedIn: true
           });
+          this.handleChange();
         } else {
           this.setState({
             signInError: json.message,

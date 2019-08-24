@@ -10,6 +10,7 @@ import Library from "./pages/mainlibrary";
 import Dashboard from "./pages/dashboard";
 import Create from "./pages/create";
 import API from "./utils/API";
+import { getFromStorage } from "./utils/storage";
 // import ProtectedRoute from "./components/protectedRoute";
 // import Login from "./components/Login";
 // import Search from "./pages/search";
@@ -18,6 +19,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      check: false,
       loggedIn: false,
       token: "",
       userId: "",
@@ -29,23 +31,20 @@ class App extends React.Component {
     this.setState({ loggedIn: input });
   };
 
-  // setLocal = () => {
-  //   localStorage.setItem("the_main_app", this.state.token);
-  // };
+  checkLog = input => {
+    this.setState({ check: input });
+  };
 
-  // componentWillMount() {
-  //   this.setLocal();
-  // }
-
-  componentDidMount() {
-    // this.getToken();
+  componentWillMount() {
+    if (this.state.check) {
+      this.getToken();
+    }
   }
 
   getToken = () => {
     var value = localStorage.getItem("the_main_app");
     var decoded = JSON.parse(value);
     var userToken = decoded.token;
-
     API.getUserId(userToken)
       .then(res => {
         if (res.data) {
@@ -89,7 +88,13 @@ class App extends React.Component {
               <Route
                 exact
                 path="/"
-                render={props => <Home {...props} loggedIn={this.login} />}
+                render={props => (
+                  <Home
+                    {...props}
+                    loggedIn={this.login}
+                    checkLog={this.checkLog}
+                  />
+                )}
               />
               <Route
                 path="/welcome"
