@@ -18,9 +18,15 @@ const routes = require("./routes");
 // ================================================================================================
 
 // Set up Mongoose
-mongoose.connect(config.db);
-mongoose.Promise = global.Promise;
 
+mongoose.Promise = global.Promise;
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    "mongodb://algouser:algouser1@ds051605.mlab.com:51605/heroku_4dx7r16z",
+  {
+    useMongoClient: true
+  }
+);
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
