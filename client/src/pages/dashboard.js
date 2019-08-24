@@ -49,6 +49,13 @@ class Dashboard extends React.Component {
       .catch(err => console.log(err));
   };
 
+  deleteSavedAlgorithms = id => {
+    console.log("delete id: ", id);
+    API.deleteSaved(id)
+      .then(res => this.loadSavedAlgorithms())
+      .catch(err => console.log(err));
+  };
+
   render() {
     // console.log(this.props.userId);
     console.log("dashboard Algo: ", this.state.savedAlgorithms);
@@ -82,7 +89,7 @@ class Dashboard extends React.Component {
                     <SavedCard
                       key={savedAlgorithm._id}
                       savedAlgorithm={savedAlgorithm}
-
+                      deleteSavedAlgorithms={this.deleteSavedAlgorithms}
                       // loadSavedAlgorithms={this.loadSavedAlgorithms}
                     />
                   ))}

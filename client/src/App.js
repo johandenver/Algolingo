@@ -19,7 +19,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       loggedIn: false,
-      token: "help",
+      token: "",
       userId: "",
       firstName: ""
     };

@@ -102,11 +102,11 @@ main {
 
 /* label color */
 .input-field label {
-  color: #black;
+  color: black;
 }
 /* label focus color */
 .input-field input[type="text"]:focus + label {
-  color: #black;
+  color: black;
 }
 /* label underline focus color */
 .input-field input[type="text"]:focus {
