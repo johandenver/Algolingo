@@ -37,4 +37,4 @@ To view live application: https://salty-harbor-40778.herokuapp.com/
 
 ## Acknowledgments
 
-- We ould love to give a shout out and thank you to the instructional staff at UC Berkeley Extention.
+- We would love to give a shout out and thank you to the instructional staff at UC Berkeley Extention.
