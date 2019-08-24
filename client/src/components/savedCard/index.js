@@ -3,7 +3,7 @@ import "./style.css";
 import { Collapsible } from "react-materialize";
 import Highlight from "react-highlight";
 import "../../../node_modules/highlight.js/styles/tomorrow-night-bright.css";
-import { FormBtn, TextArea } from "../Form/index";
+// import { FormBtn, TextArea } from "../Form/index";
 // (savedAlgorithm)
 
 class SavedCard extends React.Component {

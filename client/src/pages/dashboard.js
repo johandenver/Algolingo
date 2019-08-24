@@ -1,7 +1,7 @@
 import React from "react";
 import Sidenav from "../components/sidenav";
 import SavedCard from "../components/savedCard";
-import CustomCard from "../components/CustomCard";
+// import CustomCard from "../components/CustomCard";
 import API from "../utils/API";
 import logo2 from "../images/AlgoLingo2.png";
 

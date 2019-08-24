@@ -10,7 +10,7 @@ import Library from "./pages/mainlibrary";
 import Dashboard from "./pages/dashboard";
 import Create from "./pages/create";
 import API from "./utils/API";
-import { getFromStorage } from "./utils/storage";
+// import { getFromStorage } from "./utils/storage";
 // import ProtectedRoute from "./components/protectedRoute";
 // import Login from "./components/Login";
 // import Search from "./pages/search";
@@ -36,9 +36,12 @@ class App extends React.Component {
   };
 
   componentWillMount() {
-    if (this.state.check) {
-      this.getToken();
-    }
+    // uncomment this after loging in on localhost:
+    // this.getToken();
+    // a fix that isnt really working:
+    // if (this.state.check) {
+    //   this.getToken();
+    // }
   }
 
   getToken = () => {
