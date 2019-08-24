@@ -38,7 +38,7 @@ class App extends React.Component {
   // }
 
   componentDidMount() {
-    this.getToken();
+    // this.getToken();
   }
 
   getToken = () => {
