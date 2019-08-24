@@ -8,9 +8,9 @@ outcome.
 AlgoLingo's library of Javascript Algorithms provides various
 scenarious for Users to solve.
 
-<img src="">
+<img src="./Readme_image/Screen Shot 2019-08-23 at 7.11.37 PM.png">
 
-To view live application: Heroku.link
+To view live application: https://salty-harbor-40778.herokuapp.com/
 
 1. App allows user to register and login.
 
