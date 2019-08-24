@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const config = require("../config/config");
 const db = require("../server/models");
 
-mongoose.connect(config.db);
+mongoose.connect(
+	process.env.MONGODB_URI ||
+		"mongodb://algouser:algouser1@ds135217.mlab.com:35217/heroku_b8swn9zt"
+);
 
 const algorithmSeed = [
 	{
