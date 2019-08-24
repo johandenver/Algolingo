@@ -25,10 +25,7 @@ class SavedCard extends React.Component {
         <Collapsible className="z-depth-0">
           <li>
             <div className="collapsible-header title-header">
-              <h5 className="algo-title">
-                Algorithm:
-                {savedAlgorithm.title}
-              </h5>
+              <h5 className="algo-title">Algorithm: {savedAlgorithm.title}</h5>
               <button className="btn waves-effect waves-light delete">
                 <i className="material-icons">delete_forever</i>
               </button>
@@ -48,13 +45,13 @@ class SavedCard extends React.Component {
                     {savedAlgorithm.savedAnswer}
                     {/* {`Var exampleCode = "your saved code"`} */}
                   </Highlight>
-                  <FormBtn type="submit" name="action">
+                  {/* <FormBtn type="submit" name="action">
                     Edit
                     <i className="material-icons right">edit</i>
-                  </FormBtn>
+                  </FormBtn> */}
                 </div>
               </div>
-              <form>
+              {/* <form>
                 <div className="row form-row">
                   <TextArea
                     id="library-snippet"
@@ -67,18 +64,18 @@ class SavedCard extends React.Component {
                   Save
                   <i className="material-icons right">save</i>
                 </FormBtn>
-              </form>
+              </form> */}
               <Collapsible>
                 <li>
                   <div className="collapsible-header answer-title">
-                    <h5>Click here for one Solution!</h5>
+                    <h5>Click here for one {savedAlgorithm.title} Solution!</h5>
                   </div>
                   <div className="collapsible-body answer-body">
                     <div>
                       <p>
-                        Below is one possible way to solve the
-                        {savedAlgorithm.title}
-                        Algorithm. How does your solution compare?
+                        Below is one possible way to solve the{" "}
+                        {savedAlgorithm.title} Algorithm. How does your solution
+                        compare?
                       </p>
                       <Highlight className="Javascript answer-box">
                         {savedAlgorithm.answer}

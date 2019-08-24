@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Sidenav from "../components/sidenav";
 // import API from "../utils/API";
 import logo2 from "../images/AlgoLingo2.png";
@@ -27,27 +28,47 @@ class Welcome extends React.Component {
                 width="100"
                 alt="AlgoLingo"
               />
-              <h2>Welcome {this.props.firstName}!</h2>
+              <h2>Hello {this.props.firstName}, Welcome to AlgoLingo!</h2>
             </div>
-
-            <p>
-              Cornice T-bar endo, poaching dust on crust clipless McTwist scream
-              couloir dope hardtail. Grind clean rigid titanium, poaching huck
-              chain suck hurl carcass frozen chicken heads T-bar huckfest fatty
-              pinner BB. Sucker hole schwag schwag ripper bro travel, dope
-              huckfest. Skinny corn wack clipless bomb hole poaching Skate
-              pillow popping avie cruiser face plant presta. Skid lid bonk
-              hammer frozen chicken heads, grom 180 taco trucks japan air butter
-              heli corduroy spread eagle glades.
-            </p>
-
-            <p>
-              Skate flow rail fatty berm. Fully lid white room Whistler snake
-              bite. Face shots carbon death cookies sucker hole rip frozen
-              chicken heads ripper phat reverse camber. Glades mute brain bucket
-              presta. Huckfest shuttle tele, park rat switch stunt taco mitt BB
-              line moguls.
-            </p>
+            <br />
+            <div>
+              <i>
+                "Perhaps the most important principle for the good algorithm
+                designer is to refuse to be content." ― Alfred V. Aho
+              </i>
+            </div>
+            <div>
+              <p>
+                Algorithms are much more than just a a procedure for solving
+                mathematical problems. In programming Algorithms are most often
+                used to help in solving problems or accomplishing some desired
+                outcome.
+              </p>
+              <p>
+                AlgoLingo's library of Javascript Algorithms provides various
+                scenarious for you to solve. You will be able to save your
+                Algorithm Solutions to your Dashboard, as well as create your
+                own Algorithms.
+              </p>
+            </div>
+            <div className="button-container">
+              <div>
+                <Link to="/library">
+                  <button className="waves-effect waves-light btn-large welcome-buttons">
+                    <i className="material-icons right">library_books</i>Go to
+                    the AlgoLibrary
+                  </button>
+                </Link>
+              </div>
+              <div>
+                <Link to="/dashboard">
+                  <button className="waves-effect waves-light btn-large welcome-buttons">
+                    <i className="material-icons right">person</i>Go to your
+                    Dashboard
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

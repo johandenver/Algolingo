@@ -1,6 +1,7 @@
 import React from "react";
 import Sidenav from "../components/sidenav";
 import API from "../utils/API";
+// import { Link } from "react-router-dom";
 // import Container from "../components/container";
 // import { getFromStorage } from "../utils/storage";
 import AlgorithmCard from "../components/algorithmCard";
@@ -47,16 +48,19 @@ class Library extends React.Component {
               />
               <h2> AlgoLingo Algorithms</h2>
             </div>
-            <p>
-              Try out some Algorithms!! Cornice T-bar endo, poaching dust on
-              crust clipless McTwist scream couloir dope hardtail. Grind clean
-              rigid titanium, poaching huck chain suck hurl carcass frozen
-              chicken heads T-bar huckfest fatty pinner BB. Sucker hole schwag
-              schwag ripper bro travel, dope huckfest. Skinny corn wack clipless
-              bomb hole poaching Skate pillow popping avie cruiser face plant
-              presta. Skid lid bonk hammer frozen chicken heads, grom 180 taco
-              trucks japan air butter heli corduroy spread eagle glades.
-            </p>
+            <div>
+              <p>
+                Welcome to the AlgoLibrary. The library contains a list of
+                Javascript Algorithm Challenges.
+              </p>
+              <p>
+                Please select an Algorithm below for you to solve and save to
+                your Dashboard. If you get stuck, feel free to click on the
+                provided solution, but do note there are many ways to solve for
+                the desired result. Is your answer different than ours?
+              </p>
+            </div>
+            <h4>AlgoLibrary:</h4>
 
             {this.state.algorithms.length ? (
               <ul>
@@ -71,6 +75,15 @@ class Library extends React.Component {
             ) : (
               <h4>No Results at this time!</h4>
             )}
+
+            {/* <div>
+              <Link to="/dashboard">
+                <button className="waves-effect waves-light btn-large">
+                  <i className="material-icons right">person</i>Go to your
+                  Dashboard
+                </button>
+              </Link>
+            </div> */}
           </div>
         </div>
       </div>
