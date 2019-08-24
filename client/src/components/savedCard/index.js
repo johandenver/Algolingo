@@ -13,7 +13,8 @@ class SavedCard extends React.Component {
   }
 
   render() {
-    const { savedAlgorithm } = this.props;
+    const { savedAlgorithm, deleteSavedAlgorithms } = this.props;
+
     // console.log(savedAlgorithm);
     // console.log("props: ", this.props);
     // console.log({ savedAlgorithm });
@@ -26,7 +27,10 @@ class SavedCard extends React.Component {
           <li>
             <div className="collapsible-header title-header">
               <h5 className="algo-title">Algorithm: {savedAlgorithm.title}</h5>
-              <button className="btn waves-effect waves-light delete">
+              <button
+                className="btn waves-effect waves-light delete"
+                onClick={() => deleteSavedAlgorithms(savedAlgorithm._id)}
+              >
                 <i className="material-icons">delete_forever</i>
               </button>
             </div>
@@ -79,7 +83,6 @@ class SavedCard extends React.Component {
                       </p>
                       <Highlight className="Javascript answer-box">
                         {savedAlgorithm.answer}
-                        {`Var answerCode = "our provided answer"`}
                       </Highlight>
                     </div>
                   </div>

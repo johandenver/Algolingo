@@ -36,7 +36,6 @@ function CustomCard() {
                 <p>Your own Custom Algorithm:</p>
                 <Highlight className="Javascript answer-box">
                   {/* {Algorithm.answer} */}
-                  {`Var exampleCode = "your saved code"`}
                 </Highlight>
                 <FormBtn type="submit" name="action">
                   Edit
