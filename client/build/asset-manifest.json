@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2fa02f2a.chunk.css",
+    "main.js": "/static/js/main.122811a3.chunk.js",
+    "main.js.map": "/static/js/main.122811a3.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.58af2553.chunk.css": "/static/css/2.58af2553.chunk.css",
+    "static/js/2.71b1c159.chunk.js": "/static/js/2.71b1c159.chunk.js",
+    "static/js/2.71b1c159.chunk.js.map": "/static/js/2.71b1c159.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.17cf33e5203cf91ef1778df94a826c0e.js": "/precache-manifest.17cf33e5203cf91ef1778df94a826c0e.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.58af2553.chunk.css.map": "/static/css/2.58af2553.chunk.css.map",
+    "static/css/main.2fa02f2a.chunk.css.map": "/static/css/main.2fa02f2a.chunk.css.map",
+    "static/media/AlgoLingo1.png": "/static/media/AlgoLingo1.ef8aada4.png",
+    "static/media/AlgoLingo2.png": "/static/media/AlgoLingo2.9c34dd11.png"
+  }
+}
